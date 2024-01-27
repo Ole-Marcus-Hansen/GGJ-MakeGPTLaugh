@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 Panku="*res://addons/panku_console/console.tscn"
 APIManager="*res://Game/Scripts/Global/APIManager.gd"
 FileManager="*res://Game/Scripts/Global/FileManager.gd"
-GameLogic="*res://Game/Scripts/Global/GameLogic.gd"
+GameLogic="*res://Game/Scripts/Global/GameLogic/GameLogic.tscn"
 
 [editor_plugins]
 

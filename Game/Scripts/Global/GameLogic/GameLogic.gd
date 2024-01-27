@@ -12,7 +12,9 @@ var player: Player
 var submit_area: Area3D
 var has_submitted = false
 var is_evaluating = false
-var words = []
+var target_rating = 1
+
+@export var curve: Curve
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,11 +53,16 @@ func check_words_and_evaluate():
 	input_joke = input_joke.left(-1)	
 	
 	APIManager.callGPT(input_joke)
-	
+
 	
 func interpret_gpt_feedback(rating: int, comment: String):
 	# Interpret the feedback from Chat GPT and make things happen in the game
 	
+	if rating < target_rating:
+		# Game Over
+		return
+	
+	reset_map()
 	# To do:
 	# 1. Refer to labels on the TV screen to write rating and comment
 	# 2. Happy or angry face
@@ -65,6 +72,9 @@ func interpret_gpt_feedback(rating: int, comment: String):
 	
 	
 func reset_map():
+	# Set or reset map to default
+	
+	set_target_rating()
 	
 	var cubes = get_tree().get_nodes_in_group("cubes")
 	var num_remaining_cubes = len(cubes)
@@ -100,14 +110,15 @@ func reset_map():
 		required_interrogatives)
 	
 	spawn_cubes(word_lists)
-		
-func set_map():
 	
-	var word_lists: Dictionary = FileManager.pick_words(TOTAL_NOUNS, 
-		TOTAL_VERBS, TOTAL_ADJECTIVES, TOTAL_PRONOUNS, TOTAL_INTERROGATIVES)
 	
-	spawn_cubes(word_lists)
-		
+func set_target_rating():
+	# Set target rating player must achieve to survive
+	
+	var rng = RandomNumberGenerator.new()
+	var randfloat = rng.randf_range(0.1, 0.999)
+	var curve_y = curve.sample(randfloat)	
+	target_rating = floori(curve_y * 10)
 
 func sort_cubes(cube_1: Cube, cube_2: Cube):
 	# Sort cubes by position

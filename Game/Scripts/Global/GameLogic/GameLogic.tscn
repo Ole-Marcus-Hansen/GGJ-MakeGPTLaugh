@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmo5t7yoxsgku"]
+
+[ext_resource type="Script" path="res://Game/Scripts/Global/GameLogic/GameLogic.gd" id="1_4v6rt"]
+
+[sub_resource type="Curve" id="Curve_femmv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.20297, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Node" type="Node"]
+script = ExtResource("1_4v6rt")
+curve = SubResource("Curve_femmv")
