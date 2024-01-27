@@ -333,7 +333,7 @@ mesh = SubResource("BoxMesh_p6v07")
 
 [node name="Cube" parent="." instance=ExtResource("10_rhgqd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2.48178)
-word = "Did"
+word = "did"
 
 [node name="Cube3" parent="." instance=ExtResource("10_rhgqd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1.22727)
