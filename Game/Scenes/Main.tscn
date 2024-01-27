@@ -7,17 +7,24 @@
 [ext_resource type="PackedScene" uid="uid://dnhe2hnoojans" path="res://Game/Models/OutputStructure.glb" id="5_cet80"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ga82"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_top_color = Color(0.454902, 0.521569, 0.627451, 1)
+sky_horizon_color = Color(0.380392, 0.388235, 0.403922, 1)
+ground_bottom_color = Color(0.596078, 0.529412, 0.45098, 1)
+ground_horizon_color = Color(0.392157, 0.4, 0.415686, 1)
 
 [sub_resource type="Sky" id="Sky_rfcc3"]
 sky_material = SubResource("ProceduralSkyMaterial_4ga82")
 
 [sub_resource type="Environment" id="Environment_thki7"]
 background_mode = 2
-background_energy_multiplier = 0.2
+background_energy_multiplier = 0.3
 sky = SubResource("Sky_rfcc3")
+ambient_light_source = 2
+ambient_light_color = Color(0.415686, 0.415686, 0.415686, 1)
+ambient_light_energy = 0.84
 tonemap_mode = 2
+tonemap_exposure = 0.4
+tonemap_white = 10.0
 fog_enabled = true
 fog_light_color = Color(0.168627, 0.188235, 0.215686, 1)
 fog_light_energy = 0.5
@@ -42,8 +49,7 @@ material = SubResource("StandardMaterial3D_oxlde")
 environment = SubResource("Environment_thki7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-light_energy = 0.1
+transform = Transform3D(0.573576, -0.212012, 0.79124, 0, 0.965926, 0.258819, -0.819152, -0.148453, 0.554032, 0, 0, 0)
 shadow_enabled = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
