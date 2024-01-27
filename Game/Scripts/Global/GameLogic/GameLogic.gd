@@ -65,6 +65,7 @@ func interpret_gpt_feedback(rating: int, comment: String):
 	
 	if rating < target_rating:
 		# Game Over
+		print("you lost")
 		return
 	
 	reset_map()
@@ -83,6 +84,7 @@ func reset_map():
 	
 	var cubes = get_tree().get_nodes_in_group("cubes")
 	var num_remaining_cubes = len(cubes)
+	print("remaining cubes: " + str(num_remaining_cubes))
 	
 	var remaining_adjectives = 0
 	var remaining_interrogatives = 0
@@ -90,29 +92,29 @@ func reset_map():
 	var remaining_pronouns = 0
 	var remaining_verbs = 0
 	
-	if num_remaining_cubes < TOTAL_WORDS:
+	for cube in cubes:
 		
-		for cube in cubes:
-			
-			if not cube is Cube:
-				continue
-			
-			if cube.word_class == "adjective":
-				remaining_adjectives +=1
-			elif cube.word_class == "interrogative":
-				remaining_interrogatives += 1
-			elif cube.word_class == "noun":
-				remaining_nouns += 1
-			elif cube.word_class == "pronoun":
-				remaining_pronouns += 1
-			elif cube.word_class == "verb":
-				remaining_verbs += 1
+		if not cube is Cube:
+			continue
+		
+		if cube.word_class == "adjectives":
+			remaining_adjectives +=1
+		elif cube.word_class == "interrogatives":
+			remaining_interrogatives += 1
+		elif cube.word_class == "nouns":
+			remaining_nouns += 1
+		elif cube.word_class == "pronouns":
+			remaining_pronouns += 1
+		elif cube.word_class == "verbs":
+			remaining_verbs += 1
 	
 	var required_adjectives = TOTAL_ADJECTIVES - remaining_adjectives
 	var required_interrogatives = TOTAL_INTERROGATIVES - remaining_interrogatives
 	var required_nouns = TOTAL_NOUNS - remaining_nouns
 	var required_pronouns = TOTAL_PRONOUNS - remaining_pronouns
 	var required_verbs = TOTAL_VERBS - remaining_verbs
+	
+	print("adj" + str(required_adjectives))
 	
 	var word_lists: Dictionary = FileManager.pick_words(required_nouns, 
 		required_verbs, required_adjectives, required_pronouns, 
@@ -130,6 +132,7 @@ func set_target_rating():
 	var randfloat = rng.randf_range(0.1, 0.999)
 	var curve_y = curve.sample(randfloat)	
 	target_rating = floori(curve_y * 10)
+	print("target rating: " + str(target_rating))
 
 func sort_cubes(cube_1: Cube, cube_2: Cube):
 	# Sort cubes by position
