@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bo5fp3ijsjd0b"]
+[gd_scene load_steps=36 format=3 uid="uid://bo5fp3ijsjd0b"]
 
 [ext_resource type="PackedScene" uid="uid://c6m6es6dfclkj" path="res://Game/Scenes/Player.tscn" id="1_o2luc"]
 [ext_resource type="Material" uid="uid://ljlce7b3vt7g" path="res://Game/Materials/concreteTiles.tres" id="1_v03hj"]
@@ -6,9 +6,11 @@
 [ext_resource type="Material" uid="uid://85orxm5dwfge" path="res://Game/Materials/concreteBrown.tres" id="4_nbk4k"]
 [ext_resource type="PackedScene" uid="uid://dnhe2hnoojans" path="res://Game/Models/OutputStructure.glb" id="5_cet80"]
 [ext_resource type="PackedScene" uid="uid://yqjrsb83htlu" path="res://Game/Models/RobotScreen.glb" id="6_2ty8h"]
-[ext_resource type="Material" uid="uid://crfxvpu1pdosc" path="res://Game/Materials/steel.tres" id="6_bhcka"]
-[ext_resource type="Material" uid="uid://ditdey8bd1or8" path="res://Game/Materials/bronze.tres" id="7_sqs4n"]
-[ext_resource type="Material" uid="uid://dmp8lvludwc46" path="res://Game/Materials/screen.tres" id="8_abf6p"]
+[ext_resource type="Material" path="res://Game/Materials/steel.tres" id="6_bhcka"]
+[ext_resource type="Material" path="res://Game/Materials/bronze.tres" id="7_sqs4n"]
+[ext_resource type="Material" path="res://Game/Materials/screen.tres" id="8_abf6p"]
+[ext_resource type="Script" path="res://Game/Scripts/ScreenPlane.gd" id="10_t4dad"]
+[ext_resource type="PackedScene" uid="uid://70xef651ensh" path="res://Game/Scenes/Screen.tscn" id="11_akj8p"]
 [ext_resource type="Script" path="res://Game/Scenes/BoxArea.gd" id="11_s2g35"]
 [ext_resource type="Script" path="res://Game/Scenes/Button.gd" id="12_510r0"]
 [ext_resource type="PackedScene" uid="uid://cqr1g1xpmpvjg" path="res://Game/Models/Wall.glb" id="13_7xfcl"]
@@ -230,6 +232,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lews2")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsff0"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_tmkev"]
+material = SubResource("StandardMaterial3D_nsff0")
+size = Vector2(20, 15)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_be0lv"]
 size = Vector3(2, 5, 10)
 
@@ -295,6 +303,16 @@ transform = Transform3D(9.84808, 1.73648, 0, -1.73648, 9.84808, 0, 0, 0, 10, -10
 
 [node name="Cube" parent="RobotScreen" index="0"]
 mesh = SubResource("ArrayMesh_cvg0g")
+
+[node name="Screen" type="MeshInstance3D" parent="RobotScreen"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.185, 10, 0)
+mesh = SubResource("QuadMesh_tmkev")
+script = ExtResource("10_t4dad")
+
+[node name="SubViewport" type="SubViewport" parent="RobotScreen/Screen"]
+size = Vector2i(2000, 1500)
+
+[node name="Screen" parent="RobotScreen/Screen/SubViewport" instance=ExtResource("11_akj8p")]
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
