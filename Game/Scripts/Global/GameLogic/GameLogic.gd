@@ -90,24 +90,22 @@ func reset_map():
 	var remaining_nouns = 0
 	var remaining_pronouns = 0
 	var remaining_verbs = 0
-	
-	if num_remaining_cubes < TOTAL_WORDS:
 		
-		for cube in cubes:
-			
-			if not cube is Cube:
-				continue
-			
-			if cube.word_class == "adjective":
-				remaining_adjectives +=1
-			elif cube.word_class == "interrogative":
-				remaining_interrogatives += 1
-			elif cube.word_class == "noun":
-				remaining_nouns += 1
-			elif cube.word_class == "pronoun":
-				remaining_pronouns += 1
-			elif cube.word_class == "verb":
-				remaining_verbs += 1
+	for cube in cubes:
+		
+		if not cube is Cube:
+			continue
+		
+		if cube.word_class == "adjective":
+			remaining_adjectives +=1
+		elif cube.word_class == "interrogative":
+			remaining_interrogatives += 1
+		elif cube.word_class == "noun":
+			remaining_nouns += 1
+		elif cube.word_class == "pronoun":
+			remaining_pronouns += 1
+		elif cube.word_class == "verb":
+			remaining_verbs += 1
 	
 	var required_adjectives = TOTAL_ADJECTIVES - remaining_adjectives
 	var required_interrogatives = TOTAL_INTERROGATIVES - remaining_interrogatives
