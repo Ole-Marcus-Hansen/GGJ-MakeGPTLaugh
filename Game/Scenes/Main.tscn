@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bo5fp3ijsjd0b"]
+[gd_scene load_steps=28 format=3 uid="uid://bo5fp3ijsjd0b"]
 
 [ext_resource type="PackedScene" uid="uid://c6m6es6dfclkj" path="res://Game/Scenes/Player.tscn" id="1_o2luc"]
 [ext_resource type="Material" uid="uid://ljlce7b3vt7g" path="res://Game/Materials/concreteTiles.tres" id="1_v03hj"]
@@ -11,6 +11,7 @@
 [ext_resource type="Material" uid="uid://dmp8lvludwc46" path="res://Game/Materials/screen.tres" id="8_abf6p"]
 [ext_resource type="PackedScene" uid="uid://et78jj32du4e" path="res://Game/Scenes/Cube.tscn" id="10_rhgqd"]
 [ext_resource type="Script" path="res://Game/Scenes/BoxArea.gd" id="11_s2g35"]
+[ext_resource type="Script" path="res://Game/Scenes/Button.gd" id="12_510r0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ga82"]
 sky_top_color = Color(0.454902, 0.521569, 0.627451, 1)
@@ -230,6 +231,15 @@ shadow_mesh = SubResource("ArrayMesh_lews2")
 [sub_resource type="BoxShape3D" id="BoxShape3D_be0lv"]
 size = Vector3(2, 5, 10)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_tpp33"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_enq2s"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mkkp1"]
+size = Vector3(1, 5, 1)
+
 [node name="Root" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -249,8 +259,8 @@ material_override = ExtResource("1_v03hj")
 mesh = SubResource("BoxMesh_3e3hc")
 
 [node name="Character" parent="." instance=ExtResource("1_o2luc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 0)
-initial_facing_direction = Vector3(30, 90, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0)
+initial_facing_direction = Vector3(40, 90, 0)
 
 [node name="InputStructure" parent="." instance=ExtResource("3_46q5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
@@ -286,6 +296,26 @@ script = ExtResource("11_s2g35")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_be0lv")
+
+[node name="Button" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+script = ExtResource("12_510r0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Button"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button/StaticBody3D"]
+shape = SubResource("BoxShape3D_tpp33")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Button/StaticBody3D"]
+mesh = SubResource("BoxMesh_enq2s")
+skeleton = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="Button"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button/Area3D"]
+shape = SubResource("BoxShape3D_mkkp1")
+
+[connection signal="body_shape_entered" from="Button/Area3D" to="Button" method="_on__body_entered"]
 
 [editable path="InputStructure"]
 [editable path="OutputStructure2"]
