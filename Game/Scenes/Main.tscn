@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bo5fp3ijsjd0b"]
 
-[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Game/Scenes/character.tscn" id="1_o2luc"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Game/Scenes/Character.tscn" id="1_o2luc"]
 [ext_resource type="Material" uid="uid://ljlce7b3vt7g" path="res://Game/Materials/concreteTiles.tres" id="1_v03hj"]
 [ext_resource type="PackedScene" uid="uid://bnsdhevlmxcwb" path="res://Game/Models/InputStructure.glb" id="3_46q5h"]
 [ext_resource type="Material" uid="uid://85orxm5dwfge" path="res://Game/Materials/concreteBrown.tres" id="4_nbk4k"]
@@ -14,8 +14,12 @@ sky_material = SubResource("ProceduralSkyMaterial_4ga82")
 
 [sub_resource type="Environment" id="Environment_thki7"]
 background_mode = 2
+background_energy_multiplier = 0.2
 sky = SubResource("Sky_rfcc3")
 tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.168627, 0.188235, 0.215686, 1)
+fog_light_energy = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ihcqd"]
 size = Vector3(20, 1, 20)
@@ -38,6 +42,7 @@ environment = SubResource("Environment_thki7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.1
 shadow_enabled = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
