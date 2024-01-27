@@ -19,8 +19,11 @@ config/icon="res://icon.svg"
 
 Panku="*res://addons/panku_console/console.tscn"
 APIManager="*res://Game/Scripts/Global/APIManager.gd"
+<<<<<<< HEAD
 FileManager="*res://Game/Scripts/Global/FileManager.gd"
+=======
 Global="*res://Game/Scripts/Global/Global.gd"
+>>>>>>> 484475b9e9eb1b7c8aa14dccdcfffbaec2407fa6
 
 [editor_plugins]
 

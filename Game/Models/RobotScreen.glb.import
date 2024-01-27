@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bnsdhevlmxcwb"
-path="res://.godot/imported/InputStructure.glb-9503a1a43a11fe36a939540026e533f6.scn"
+uid="uid://yqjrsb83htlu"
+path="res://.godot/imported/RobotScreen.glb-51e1ed3f2857188709e87848bb0244de.scn"
 
 [deps]
 
-source_file="res://Game/Models/InputStructure.glb"
-dest_files=["res://.godot/imported/InputStructure.glb-9503a1a43a11fe36a939540026e533f6.scn"]
+source_file="res://Game/Models/RobotScreen.glb"
+dest_files=["res://.godot/imported/RobotScreen.glb-51e1ed3f2857188709e87848bb0244de.scn"]
 
 [params]
 
@@ -29,13 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Cube": {
-"generate/physics": true,
-"physics/shape_type": 2
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

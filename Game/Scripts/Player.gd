@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 # TODO: Add descriptions for each value
 
@@ -65,6 +66,7 @@ var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") 
 
 
 func _ready():
+	Global.player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	# Set the camera rotation to whatever initial_facing_direction is
@@ -126,16 +128,7 @@ func handle_movement(delta, input_dir):
 	var direction = input_dir.rotated(-HEAD.rotation.y)
 	direction = Vector3(direction.x, 0, direction.y)
 	
-	var last_velocity := velocity
 	move_and_slide()
-	last_velocity.y = velocity.y
-	
-	for col_idx in get_slide_collision_count():
-		var col := get_slide_collision(col_idx)
-		if col.get_collider() is Cube:
-			col.get_collider().push(last_velocity)
-			#col.get_collider().apply_impulse(-col.get_normal() * 100 * delta, col.get_position() - col.get_collider().global_position)
-	
 	
 	if in_air_momentum:
 		if is_on_floor():
@@ -152,9 +145,6 @@ func handle_movement(delta, input_dir):
 		else:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
-	
-	
-	
 
 func handle_state(moving):
 	if sprint_enabled:
