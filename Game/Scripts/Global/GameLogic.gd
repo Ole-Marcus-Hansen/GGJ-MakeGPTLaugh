@@ -1,5 +1,13 @@
 extends Node
 
+const TOTAL_ADJECTIVES = 3
+const TOTAL_INTERROGATIVES = 1
+const TOTAL_NOUNS = 3
+const TOTAL_PRONOUNS = 1
+const TOTAL_VERBS = 2
+const TOTAL_WORDS = TOTAL_ADJECTIVES + TOTAL_INTERROGATIVES + TOTAL_NOUNS + \
+	TOTAL_PRONOUNS + TOTAL_VERBS
+
 var player: Player
 var submit_area: Area3D
 var has_submitted = false
@@ -22,6 +30,11 @@ func _process(delta):
 
 func check_words_and_evaluate():
 	# Check word blocks from map and then call APIManager
+	
+	if has_submitted:
+		return
+	
+	has_submitted = true
 	
 	var bodies = submit_area.get_overlapping_bodies()
 	var cubes = []
@@ -49,6 +62,14 @@ func interpret_gpt_feedback(rating: int, comment: String):
 	# 3. Laugh-o-meter???
 	# 4. Handle game over or next level
 	pass
+	
+	
+func reset_map():
+	var cubes = get_tree().get_nodes_in_group("cubes")
+	var num_remaining_cubes = len(cubes)
+	
+	if num_remaining_cubes < TOTAL_WORDS:
+		pass
 	
 
 func sort_cubes(cube_1: Cube, cube_2: Cube):

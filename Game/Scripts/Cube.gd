@@ -41,6 +41,7 @@ func set_colour(colour: Color) -> void:
 
 
 func _ready() -> void:
+	add_to_group("cubes")
 	%Mesh.mesh.material.albedo_texture = %Viewport.get_texture()
 
 func play_spawn_animation(pos: Vector3) -> void:
