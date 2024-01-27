@@ -10,7 +10,7 @@ const maxTokens = 128
 const headers = ["Content-type: application/json", "Authorization: Bearer " + Secrets.key]
 const model = "gpt-3.5-turbo"
 
-@onready var prompt = "Rate this joke from 1 to 10. Respond in JSON format {rating: int, comment: string}. Here is the joke: "
+@onready var prompt = "You are a silly robot judging jokes. Rate the following joke from 1 to 10. Respond in JSON format {rating: int, comment: string}"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,8 +24,10 @@ func _ready():
 
 func callGPT(input_joke):
 	var messages = [
+		{"role": "system",
+		"content": prompt},
 		{"role": "user",
-		"content": prompt + input_joke}
+		"content": "joke: " + input_joke}
 	]
 	
 	var body = JSON.stringify({

@@ -232,10 +232,10 @@ shadow_mesh = SubResource("ArrayMesh_lews2")
 size = Vector3(2, 5, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tpp33"]
-size = Vector3(2, 2, 2)
+size = Vector3(2, 1.6, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_enq2s"]
-size = Vector3(2, 2, 2)
+size = Vector3(2, 1.8, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mkkp1"]
 size = Vector3(1, 5, 1)
@@ -305,10 +305,10 @@ word = "What"
 area = NodePath("../Cube/Area")
 
 [node name="Button" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.160685, 0)
 script = ExtResource("12_510r0")
 
-[node name="PressurePlate" type="StaticBody3D" parent="Button"]
+[node name="PressurePlate" type="AnimatableBody3D" parent="Button"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Button/PressurePlate"]
 shape = SubResource("BoxShape3D_tpp33")
@@ -345,6 +345,7 @@ word = "Do"
 area = NodePath("../Cube/Area")
 
 [connection signal="body_shape_entered" from="Button/Area3D" to="Button" method="_on__body_entered"]
+[connection signal="body_shape_exited" from="Button/Area3D" to="Button" method="_on_body_exited"]
 
 [editable path="InputStructure"]
 [editable path="OutputStructure2"]
