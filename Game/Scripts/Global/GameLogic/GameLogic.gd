@@ -19,6 +19,7 @@ var target_rating = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	APIManager.completed.connect(interpret_gpt_feedback)
+	reset_map()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,6 +58,8 @@ func check_words_and_evaluate():
 	
 func interpret_gpt_feedback(rating: int, comment: String):
 	# Interpret the feedback from Chat GPT and make things happen in the game
+	
+	
 	
 	if rating < target_rating:
 		# Game Over
