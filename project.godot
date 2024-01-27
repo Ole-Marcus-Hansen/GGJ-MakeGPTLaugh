@@ -24,6 +24,10 @@ APIManager="*res://Game/Scripts/Global/APIManager.gd"
 
 enabled=PackedStringArray("res://addons/panku_console/plugin.cfg")
 
+[filesystem]
+
+import/fbx/enabled=false
+
 [input]
 
 sprint={
