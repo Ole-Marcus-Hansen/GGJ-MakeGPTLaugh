@@ -4,12 +4,12 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nu0wi"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vpypm"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xkusk"]
 viewport_path = NodePath("Mesh/Viewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wgkc"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_vpypm")
+albedo_texture = SubResource("ViewportTexture_xkusk")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
@@ -56,6 +56,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 64
 horizontal_alignment = 1
 vertical_alignment = 1

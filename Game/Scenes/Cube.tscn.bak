@@ -5,39 +5,40 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_nu0wi"]
 
 <<<<<<< HEAD
-[sub_resource type="ViewportTexture" id="ViewportTexture_yfukt"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vpypm"]
 =======
-[sub_resource type="ViewportTexture" id="ViewportTexture_ecsxa"]
->>>>>>> 2c517339f9f80d10cacb90826ceb63da86a24caa
+[sub_resource type="ViewportTexture" id="ViewportTexture_xkusk"]
+>>>>>>> d54bd4e2c7f634b12738b985784085c105e4ca49
 viewport_path = NodePath("Mesh/Viewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wgkc"]
 resource_local_to_scene = true
 <<<<<<< HEAD
-albedo_texture = SubResource("ViewportTexture_yfukt")
+albedo_texture = SubResource("ViewportTexture_vpypm")
 =======
-albedo_texture = SubResource("ViewportTexture_ecsxa")
->>>>>>> 2c517339f9f80d10cacb90826ceb63da86a24caa
+albedo_texture = SubResource("ViewportTexture_xkusk")
+>>>>>>> d54bd4e2c7f634b12738b985784085c105e4ca49
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_4uwrr"]
+resource_local_to_scene = true
 lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("StandardMaterial3D_3wgkc")
 add_uv2 = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7pegk"]
-size = Vector3(1.5, 1, 1.5)
+size = Vector3(1.5, 0.8, 1.5)
 
-[node name="Cube" type="CharacterBody3D" node_paths=PackedStringArray("area")]
+[node name="Cube" type="CharacterBody3D"]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_4skhh")
-friction = 1.0
-area = NodePath("Area")
+gravity = 0.5
+friction = 10.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Hitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_nu0wi")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
@@ -47,7 +48,8 @@ mesh = SubResource("BoxMesh_4uwrr")
 [node name="Viewport" type="SubViewport" parent="Mesh"]
 unique_name_in_owner = true
 
-[node name="ColorRect" type="ColorRect" parent="Mesh/Viewport"]
+[node name="Colour" type="ColorRect" parent="Mesh/Viewport"]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -62,11 +64,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 64
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Area" type="Area3D" parent="."]
+unique_name_in_owner = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area"]
 shape = SubResource("BoxShape3D_7pegk")
