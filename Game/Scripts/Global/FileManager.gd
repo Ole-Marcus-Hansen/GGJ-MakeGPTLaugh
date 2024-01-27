@@ -32,6 +32,28 @@ var word_lists: Dictionary = {
 		}	
 }
 
+var word_selection_lists: Dictionary = {
+	"adjectives": {
+		"color": Color.ORANGE,
+		"words": []
+		},
+	"interrogatives": {
+		"color": Color.YELLOW,
+		"words": []
+		},
+	"nouns": {
+		"color": Color.BLUE,
+		"words": []
+		},
+	"pronouns": {
+		"color": Color.GREEN,
+		"words": []
+		},
+	"verbs": {
+		"color": Color.RED,
+		"words": []
+		}	
+}
 var chosen_words: PackedStringArray = []
 
 
@@ -137,6 +159,7 @@ func pick_words(nouns: int, verbs: int, adjectives: int, pronouns: int,
 			var num_lines = word_lists[word_class]["num_lines"]
 			var randint = rng.randi_range(0, num_lines - 1)
 			var word_array = word_lists[word_class]["words"]
-			chosen_words.append(word_array[randint])
+			var chosen_word = word_array[randint]
+			word_selection_lists[word_class]["words"].append(chosen_word)
 		
 	return chosen_words	
