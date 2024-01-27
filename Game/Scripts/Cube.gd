@@ -2,6 +2,8 @@
 extends CharacterBody3D
 class_name Cube
 
+var word_class: String = ""
+
 @export var word := "":
 	set(x):
 		word = x

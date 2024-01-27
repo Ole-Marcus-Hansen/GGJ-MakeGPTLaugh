@@ -9,7 +9,7 @@ var spawn_locations: Array[SpawnPosition]
 var location_pool: Array[SpawnPosition]
 
 
-func spawn(text: String, colour := Color.BLACK) -> void:
+func spawn(text: String, word_class: String, colour := Color.BLACK) -> void:
 	if location_pool.is_empty():
 		location_pool = spawn_locations.duplicate()
 	
@@ -21,6 +21,7 @@ func spawn(text: String, colour := Color.BLACK) -> void:
 	
 	var cube := cube_scene.instantiate() as Cube
 	cube.word = text
+	cube.word_class = word_class
 	cube.spawned = true
 	cube.set_colour(colour)
 	add_child(cube)

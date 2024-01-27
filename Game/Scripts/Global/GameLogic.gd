@@ -65,12 +65,49 @@ func interpret_gpt_feedback(rating: int, comment: String):
 	
 	
 func reset_map():
+	
 	var cubes = get_tree().get_nodes_in_group("cubes")
 	var num_remaining_cubes = len(cubes)
 	
-	if num_remaining_cubes < TOTAL_WORDS:
-		pass
+	var remaining_adjectives = 0
+	var remaining_interrogatives = 0
+	var remaining_nouns = 0
+	var remaining_pronouns = 0
+	var remaining_verbs = 0
 	
+	if num_remaining_cubes < TOTAL_WORDS:
+		
+		for cube: Cube in cubes:
+			if cube.word_class == "adjective":
+				remaining_adjectives +=1
+			elif cube.word_class == "interrogative":
+				remaining_interrogatives += 1
+			elif cube.word_class == "noun":
+				remaining_nouns += 1
+			elif cube.word_class == "pronoun":
+				remaining_pronouns += 1
+			elif cube.word_class == "verb":
+				remaining_verbs += 1
+	
+	var required_adjectives = TOTAL_ADJECTIVES - remaining_adjectives
+	var required_interrogatives = TOTAL_INTERROGATIVES - remaining_interrogatives
+	var required_nouns = TOTAL_NOUNS - remaining_nouns
+	var required_pronouns = TOTAL_PRONOUNS - remaining_pronouns
+	var required_verbs = TOTAL_VERBS - remaining_verbs
+	
+	var word_lists: Dictionary = FileManager.pick_words(required_nouns, 
+		required_verbs, required_adjectives, required_pronouns, 
+		required_interrogatives)
+	
+	spawn_cubes(word_lists)
+		
+func set_map():
+	
+	var word_lists: Dictionary = FileManager.pick_words(TOTAL_NOUNS, 
+		TOTAL_VERBS, TOTAL_ADJECTIVES, TOTAL_PRONOUNS, TOTAL_INTERROGATIVES)
+	
+	spawn_cubes(word_lists)
+		
 
 func sort_cubes(cube_1: Cube, cube_2: Cube):
 	# Sort cubes by position
@@ -79,3 +116,23 @@ func sort_cubes(cube_1: Cube, cube_2: Cube):
 	var posz_2 = cube_2.global_position.z
 	
 	return posz_1 > posz_2
+	
+
+func spawn_cubes(word_lists):
+	# Prepere words and spawn cubes
+	
+	var index = 0
+	var spawners = get_tree().get_nodes_in_group("spawners")
+	for word_class in word_lists:
+		
+		var color: String = word_lists[word_class]["color"]
+		
+		for word in word_lists[word_class]["words"]:
+			
+			if index == len(spawners):
+				index == 0
+				
+			var spawner: Spawner = spawners[index]
+			spawner.spawn(word, word_class, color)
+	
+	index += 1
