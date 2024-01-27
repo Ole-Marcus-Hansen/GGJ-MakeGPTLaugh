@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bo5fp3ijsjd0b"]
+[gd_scene load_steps=32 format=3 uid="uid://bo5fp3ijsjd0b"]
 
 [ext_resource type="PackedScene" uid="uid://c6m6es6dfclkj" path="res://Game/Scenes/Player.tscn" id="1_o2luc"]
 [ext_resource type="Material" uid="uid://ljlce7b3vt7g" path="res://Game/Materials/concreteTiles.tres" id="1_v03hj"]
@@ -6,10 +6,9 @@
 [ext_resource type="Material" uid="uid://85orxm5dwfge" path="res://Game/Materials/concreteBrown.tres" id="4_nbk4k"]
 [ext_resource type="PackedScene" uid="uid://dnhe2hnoojans" path="res://Game/Models/OutputStructure.glb" id="5_cet80"]
 [ext_resource type="PackedScene" uid="uid://yqjrsb83htlu" path="res://Game/Models/RobotScreen.glb" id="6_2ty8h"]
-[ext_resource type="Material" path="res://Game/Materials/steel.tres" id="6_bhcka"]
-[ext_resource type="Material" path="res://Game/Materials/bronze.tres" id="7_sqs4n"]
-[ext_resource type="Material" path="res://Game/Materials/screen.tres" id="8_abf6p"]
-[ext_resource type="PackedScene" uid="uid://et78jj32du4e" path="res://Game/Scenes/Cube.tscn" id="10_rhgqd"]
+[ext_resource type="Material" uid="uid://crfxvpu1pdosc" path="res://Game/Materials/steel.tres" id="6_bhcka"]
+[ext_resource type="Material" uid="uid://ditdey8bd1or8" path="res://Game/Materials/bronze.tres" id="7_sqs4n"]
+[ext_resource type="Material" uid="uid://dmp8lvludwc46" path="res://Game/Materials/screen.tres" id="8_abf6p"]
 [ext_resource type="Script" path="res://Game/Scenes/BoxArea.gd" id="11_s2g35"]
 [ext_resource type="Script" path="res://Game/Scenes/Button.gd" id="12_510r0"]
 [ext_resource type="PackedScene" uid="uid://cqr1g1xpmpvjg" path="res://Game/Models/Wall.glb" id="13_7xfcl"]
@@ -304,10 +303,6 @@ script = ExtResource("11_s2g35")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_be0lv")
 
-[node name="Cube2" parent="." instance=ExtResource("10_rhgqd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72752, 2, 3.63581)
-word = "What"
-
 [node name="Button" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.160685, 0)
 script = ExtResource("12_510r0")
@@ -333,18 +328,6 @@ shape = SubResource("BoxShape3D_dc42n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Button/Frame"]
 mesh = SubResource("BoxMesh_p6v07")
-
-[node name="Cube" parent="." instance=ExtResource("10_rhgqd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2.48178)
-word = "did"
-
-[node name="Cube3" parent="." instance=ExtResource("10_rhgqd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1.22727)
-word = "Dog"
-
-[node name="Cube4" parent="." instance=ExtResource("10_rhgqd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -4.74397)
-word = "Do"
 
 [node name="Wall" parent="." instance=ExtResource("13_7xfcl")]
 transform = Transform3D(0.00570722, 0, 0.999984, 0, 1, 0, -0.999984, 0, 0.00570722, -3.81026, 0.5, 10.7966)
@@ -394,8 +377,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.271804, 4.83182, -8.65872)
 [node name="SpawnPosition" parent="Spawner" instance=ExtResource("15_64hg4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.502324, -4.33182, 6.28421)
 
+[node name="SpawnPosition9" parent="Spawner" instance=ExtResource("15_64hg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55866, -4.33182, 7.30907)
+
 [node name="SpawnPosition2" parent="Spawner" instance=ExtResource("15_64hg4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05944, -4.33182, 5.5042)
+
+[node name="SpawnPosition4" parent="Spawner" instance=ExtResource("15_64hg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.54865, -4.33182, 2.64309)
+
+[node name="SpawnPosition5" parent="Spawner" instance=ExtResource("15_64hg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82323, -4.33182, 3.11779)
+
+[node name="SpawnPosition6" parent="Spawner" instance=ExtResource("15_64hg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.49987, -4.33182, 4.26848)
+
+[node name="SpawnPosition7" parent="Spawner" instance=ExtResource("15_64hg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20091, -4.33182, 5.04981)
+
+[node name="SpawnPosition8" parent="Spawner" instance=ExtResource("15_64hg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2455, -4.33182, 3.48374)
 
 [node name="SpawnPosition3" parent="Spawner" instance=ExtResource("15_64hg4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00187, -4.33182, 2.60543)
@@ -411,6 +412,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.66988, -4.29361, -7.02808)
 
 [node name="SpawnPosition6" parent="Spawner2" instance=ExtResource("15_64hg4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47352, -4.29361, -5.74652)
+
+[node name="SpawnPosition7" parent="Spawner2" instance=ExtResource("15_64hg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50518, -4.29361, -3.27656)
+
+[node name="SpawnPosition8" parent="Spawner2" instance=ExtResource("15_64hg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.21164, -4.29361, -4.52903)
+
+[node name="SpawnPosition9" parent="Spawner2" instance=ExtResource("15_64hg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46667, -4.29361, -3.4122)
+
+[node name="SpawnPosition10" parent="Spawner2" instance=ExtResource("15_64hg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.906125, -4.29361, -5.95613)
+
+[node name="SpawnPosition11" parent="Spawner2" instance=ExtResource("15_64hg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01569, -4.29361, -7.36009)
 
 [connection signal="body_shape_entered" from="Button/Area3D" to="Button" method="_on__body_entered"]
 [connection signal="body_shape_exited" from="Button/Area3D" to="Button" method="_on_body_exited"]

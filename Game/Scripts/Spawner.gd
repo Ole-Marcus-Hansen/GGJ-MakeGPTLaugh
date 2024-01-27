@@ -34,7 +34,7 @@ func spawn(text: String, word_class: String, colour := Color.BLACK) -> void:
 
 
 func _ready() -> void:
-	add_to_group("spawner")
+	add_to_group("spawners")
 	
 	for c in get_children():
 		if c is SpawnPosition:
