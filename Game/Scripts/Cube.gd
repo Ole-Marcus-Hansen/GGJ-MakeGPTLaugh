@@ -9,14 +9,13 @@ class_name Cube
 
 @export var gravity: float = 100
 @export var friction: float = 100
-@export var area: Area3D
 
 
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	
-	if is_instance_valid(GameLogic.player) and area.overlaps_body(GameLogic.player):
+	if is_instance_valid(GameLogic.player) and %Area.overlaps_body(GameLogic.player):
 		var dir: Vector3 = GameLogic.player.global_position.direction_to(global_position)
 		dir.y = 0
 		
@@ -34,10 +33,21 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	velocity = velocity.move_toward(Vector3.ZERO, friction * delta)
+	
 
+
+func set_colour(colour: Color) -> void:
+	%Colour.color = colour
 
 
 func _ready() -> void:
+	add_to_group("cubes")
 	%Mesh.mesh.material.albedo_texture = %Viewport.get_texture()
 
+func play_spawn_animation(pos: Vector3) -> void:
+	%Mesh.scale = Vector3.ZERO
+	
+	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(%Mesh, ^"scale", Vector3.ONE, 1)
+	#tween.tween_property(self, ^"scale", Vector3.ONE, 1)
 

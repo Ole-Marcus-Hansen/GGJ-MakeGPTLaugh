@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Game/Scripts/Player.gd" id="1_lfkc2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uy03j"]
+radius = 0.3
 
 [sub_resource type="Animation" id="Animation_pqev3"]
 length = 0.001

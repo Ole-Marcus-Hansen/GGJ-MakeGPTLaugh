@@ -232,10 +232,10 @@ shadow_mesh = SubResource("ArrayMesh_lews2")
 size = Vector3(2, 5, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tpp33"]
-size = Vector3(2, 1.6, 2)
+size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_enq2s"]
-size = Vector3(2, 1.8, 2)
+size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mkkp1"]
 size = Vector3(1, 5, 1)
@@ -265,8 +265,12 @@ material_override = ExtResource("1_v03hj")
 mesh = SubResource("BoxMesh_3e3hc")
 
 [node name="Character" parent="." instance=ExtResource("1_o2luc")]
+<<<<<<< HEAD
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 0)
+=======
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0)
 initial_facing_direction = Vector3(40, 90, 0)
+>>>>>>> 2c517339f9f80d10cacb90826ceb63da86a24caa
 
 [node name="InputStructure" parent="." instance=ExtResource("3_46q5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
@@ -305,10 +309,10 @@ word = "What"
 area = NodePath("../Cube/Area")
 
 [node name="Button" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.160685, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 script = ExtResource("12_510r0")
 
-[node name="PressurePlate" type="AnimatableBody3D" parent="Button"]
+[node name="PressurePlate" type="StaticBody3D" parent="Button"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Button/PressurePlate"]
 shape = SubResource("BoxShape3D_tpp33")
@@ -345,7 +349,6 @@ word = "Do"
 area = NodePath("../Cube/Area")
 
 [connection signal="body_shape_entered" from="Button/Area3D" to="Button" method="_on__body_entered"]
-[connection signal="body_shape_exited" from="Button/Area3D" to="Button" method="_on_body_exited"]
 
 [editable path="InputStructure"]
 [editable path="OutputStructure2"]
