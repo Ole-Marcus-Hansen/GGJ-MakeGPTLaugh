@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba1bbxcxr2o6k"]
+
+[ext_resource type="Script" path="res://Game/Scripts/Spawner.gd" id="1_oqm3r"]
+[ext_resource type="PackedScene" uid="uid://et78jj32du4e" path="res://Game/Scenes/Cube.tscn" id="2_26rgk"]
+
+[node name="Spawner" type="Marker3D"]
+script = ExtResource("1_oqm3r")
+upward_force = 15.0
+cube_scene = ExtResource("2_26rgk")

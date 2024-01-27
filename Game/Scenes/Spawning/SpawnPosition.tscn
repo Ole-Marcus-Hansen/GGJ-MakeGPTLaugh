@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://crakygybe67sl"]
+
+[ext_resource type="Script" path="res://Game/Scripts/SpawnPosition.gd" id="1_osoaa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgrk5"]
+transparency = 1
+albedo_color = Color(0, 1, 0, 0.207843)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s2cht"]
+material = SubResource("StandardMaterial3D_fgrk5")
+
+[node name="SpawnPosition" type="Marker3D"]
+script = ExtResource("1_osoaa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_s2cht")
