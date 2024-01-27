@@ -139,11 +139,14 @@ func sort_cubes(cube_1: Cube, cube_2: Cube):
 func spawn_cubes(word_lists):
 	# Prepere words and spawn cubes
 	
+	var spawners = get_tree().get_nodes_in_group("spawners")	
+	if spawners.is_empty():
+		return
+		
 	var index = 0
-	var spawners = get_tree().get_nodes_in_group("spawners")
 	for word_class in word_lists:
 		
-		var color: String = word_lists[word_class]["color"]
+		var color: Color = word_lists[word_class]["color"]
 		
 		for word in word_lists[word_class]["words"]:
 			

@@ -279,7 +279,7 @@ material_override = ExtResource("4_nbk4k")
 [node name="OutputStructure2" parent="." instance=ExtResource("5_cet80")]
 transform = Transform3D(-0.939692, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939692, 0, 0.5, 8)
 
-[node name="Cube" parent="OutputStructure2" index="0" groups=["cubes"]]
+[node name="Cube" parent="OutputStructure2" index="0"]
 mesh = SubResource("ArrayMesh_d1q8q")
 
 [node name="OutputStructure" parent="." instance=ExtResource("5_cet80")]
