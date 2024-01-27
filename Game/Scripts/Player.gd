@@ -122,7 +122,6 @@ func handle_jumping():
 					JUMP_ANIMATION.play("jump")
 				velocity.y += jump_velocity
 
-@export var test: RigidBody3D
 
 func handle_movement(delta, input_dir):
 	var direction = input_dir.rotated(-HEAD.rotation.y)
@@ -241,11 +240,11 @@ func headbob_animation(moving):
 
 func _process(_delta):
 	
-	if Input.is_action_just_pressed(PAUSE):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#if Input.is_action_just_pressed(PAUSE):
+		#if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		#elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+			#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	HEAD.rotation.x = clamp(HEAD.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 	

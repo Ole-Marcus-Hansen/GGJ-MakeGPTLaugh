@@ -1,6 +1,6 @@
-@tool
-extends EditorScript
-#extends Node
+#@tool
+#extends EditorScript
+extends Node
 
 const TOTAL_NUM_WORDS = 10
 const ADJECTIVES_FILE = "res://Game/Text/adjectives.txt"

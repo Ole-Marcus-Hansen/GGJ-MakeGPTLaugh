@@ -201,8 +201,23 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k4wwl"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH")]
 script = ExtResource("1_lfkc2")
+HEAD = NodePath("Head")
+CAMERA = NodePath("Head/Camera")
+HEADBOB_ANIMATION = NodePath("Head/HeadbobAnimation")
+JUMP_ANIMATION = NodePath("Head/JumpAnimation")
+CROUCH_ANIMATION = NodePath("CrouchAnimation")
+COLLISION_MESH = NodePath("Collision")
+JUMP = "jump"
+LEFT = "left"
+RIGHT = "right"
+FORWARD = "forward"
+BACKWARD = "backward"
+PAUSE = ""
+CROUCH = "crouch"
+SPRINT = "sprint"
+in_air_momentum = false
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
