@@ -16,17 +16,17 @@ class_name Cube
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	
-	if is_instance_valid(Global.player) and area.overlaps_body(Global.player):
-		var dir: Vector3 = Global.player.global_position.direction_to(global_position)
+	if is_instance_valid(GameLogic.player) and area.overlaps_body(GameLogic.player):
+		var dir: Vector3 = GameLogic.player.global_position.direction_to(global_position)
 		dir.y = 0
 		
 		if absf(dir.x) > absf(dir.z): dir.z = 0
 		else: dir.x = 0
 		
 		for i in 3:
-			if dir[i] * Global.player.velocity[i] > 0:
-				if absf(Global.player.velocity[i]) > absf(velocity[i]):
-					velocity[i] = Global.player.velocity[i]
+			if dir[i] * GameLogic.player.velocity[i] > 0:
+				if absf(GameLogic.player.velocity[i]) > absf(velocity[i]):
+					velocity[i] = GameLogic.player.velocity[i]
 				break
 	
 	if not is_on_floor():
