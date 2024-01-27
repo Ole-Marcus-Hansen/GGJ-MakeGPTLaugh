@@ -54,7 +54,6 @@ var word_selection_lists: Dictionary = {
 		"words": []
 		}	
 }
-var chosen_words: PackedStringArray = []
 
 
 func _run():
@@ -126,9 +125,9 @@ func pick_words(nouns: int, verbs: int, adjectives: int, pronouns: int,
 	interrogatives: int):
 	# Pick a certain amount of random words from word list file
 	
-	if not chosen_words.is_empty():
-		# Clear the chosen words array if not empty
-		chosen_words.clear()
+	for word_class in word_selection_lists:
+		# Clear words from dictionary
+		word_selection_lists[word_class]["words"].clear()
 	
 	for word_class in word_lists:
 		# If data is missing for any reason, reset word list dictionary
@@ -162,4 +161,4 @@ func pick_words(nouns: int, verbs: int, adjectives: int, pronouns: int,
 			var chosen_word = word_array[randint]
 			word_selection_lists[word_class]["words"].append(chosen_word)
 		
-	return chosen_words	
+	return word_selection_lists	

@@ -19,6 +19,7 @@ var target_rating = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	APIManager.completed.connect(interpret_gpt_feedback)
+	reset_map()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,6 +59,8 @@ func check_words_and_evaluate():
 func interpret_gpt_feedback(rating: int, comment: String):
 	# Interpret the feedback from Chat GPT and make things happen in the game
 	
+	
+	
 	if rating < target_rating:
 		# Game Over
 		return
@@ -87,7 +90,11 @@ func reset_map():
 	
 	if num_remaining_cubes < TOTAL_WORDS:
 		
-		for cube: Cube in cubes:
+		for cube in cubes:
+			
+			if not cube is Cube:
+				continue
+			
 			if cube.word_class == "adjective":
 				remaining_adjectives +=1
 			elif cube.word_class == "interrogative":
@@ -132,11 +139,14 @@ func sort_cubes(cube_1: Cube, cube_2: Cube):
 func spawn_cubes(word_lists):
 	# Prepere words and spawn cubes
 	
+	var spawners = get_tree().get_nodes_in_group("spawners")	
+	if spawners.is_empty():
+		return
+		
 	var index = 0
-	var spawners = get_tree().get_nodes_in_group("spawners")
 	for word_class in word_lists:
 		
-		var color: String = word_lists[word_class]["color"]
+		var color: Color = word_lists[word_class]["color"]
 		
 		for word in word_lists[word_class]["words"]:
 			
