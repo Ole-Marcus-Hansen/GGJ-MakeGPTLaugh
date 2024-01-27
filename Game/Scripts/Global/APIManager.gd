@@ -5,7 +5,7 @@ signal completed(rating, comment)
 @onready var http_request = HTTPRequest.new()
 
 const url = "https://api.openai.com/v1/chat/completions"
-const temperature = 0.1
+const temperature = 0
 const maxTokens = 128
 const headers = ["Content-type: application/json", "Authorization: Bearer " + Secrets.key]
 const model = "gpt-3.5-turbo"
@@ -54,6 +54,6 @@ func _http_request_completed(result, response_code, headers, body):
 	json.parse(message)
 	var message_split = json.get_data()
 	
-	print("split: " + str(message_split["rating"]) + ", " + message_split["comment"])
+	#print("split: " + str(message_split["rating"]) + ", " + message_split["comment"])
 	
 	completed.emit(message_split["rating"], message_split["comment"])

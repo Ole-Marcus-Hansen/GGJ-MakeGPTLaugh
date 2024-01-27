@@ -4,12 +4,12 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nu0wi"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_so3eb"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ecsxa"]
 viewport_path = NodePath("Mesh/Viewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wgkc"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_so3eb")
+albedo_texture = SubResource("ViewportTexture_ecsxa")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
