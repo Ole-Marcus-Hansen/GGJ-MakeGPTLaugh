@@ -10,7 +10,7 @@ const maxTokens = 128
 const headers = ["Content-type: application/json", "Authorization: Bearer " + Secrets.key]
 const model = "gpt-3.5-turbo"
 
-@onready var prompt = "You are a silly robot judging jokes. Rate the following joke from 1 to 10. Respond in JSON format {rating: int, comment: string}"
+@onready var prompt = """Rate the following joke from 1 to 10. You are a huge evil robot who doesn't fully understand how jokes work. If the joke is incomplete or nonsensible, rate it nonetheless like you think it's a joke. Respond in JSON format {"rating": int, "comment": string}"""
 
 
 # Called when the node enters the scene tree for the first time.
