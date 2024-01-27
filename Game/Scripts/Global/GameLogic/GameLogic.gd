@@ -64,6 +64,7 @@ func interpret_gpt_feedback(rating: int, comment: String):
 	
 	if rating < target_rating:
 		# Game Over
+		print("you lost")
 		return
 	
 	reset_map()
@@ -82,6 +83,7 @@ func reset_map():
 	
 	var cubes = get_tree().get_nodes_in_group("cubes")
 	var num_remaining_cubes = len(cubes)
+	print(num_remaining_cubes)
 	
 	var remaining_adjectives = 0
 	var remaining_interrogatives = 0
