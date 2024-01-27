@@ -19,6 +19,7 @@ var target_rating = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	APIManager.completed.connect(interpret_gpt_feedback)
+	reset_map()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,6 +59,8 @@ func check_words_and_evaluate():
 func interpret_gpt_feedback(rating: int, comment: String):
 	# Interpret the feedback from Chat GPT and make things happen in the game
 	
+	
+	
 	if rating < target_rating:
 		# Game Over
 		return
@@ -87,7 +90,11 @@ func reset_map():
 	
 	if num_remaining_cubes < TOTAL_WORDS:
 		
-		for cube: Cube in cubes:
+		for cube in cubes:
+			
+			if not cube is Cube:
+				continue
+			
 			if cube.word_class == "adjective":
 				remaining_adjectives +=1
 			elif cube.word_class == "interrogative":
