@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bo5fp3ijsjd0b"]
+[gd_scene load_steps=11 format=3 uid="uid://bo5fp3ijsjd0b"]
 
+[ext_resource type="Material" uid="uid://85orxm5dwfge" path="res://Game/Materials/concreteBrown.tres" id="1_53ma2"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Game/Scenes/character.tscn" id="1_o2luc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ga82"]
@@ -43,6 +44,7 @@ shadow_enabled = true
 shape = SubResource("BoxShape3D_ihcqd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = ExtResource("1_53ma2")
 mesh = SubResource("BoxMesh_3e3hc")
 
 [node name="Character" parent="." node_paths=PackedStringArray("test") instance=ExtResource("1_o2luc")]
