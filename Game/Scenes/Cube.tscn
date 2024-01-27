@@ -4,12 +4,12 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nu0wi"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_imfgw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_o6d4x"]
 viewport_path = NodePath("Mesh/Viewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wgkc"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_imfgw")
+albedo_texture = SubResource("ViewportTexture_o6d4x")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
@@ -20,17 +20,17 @@ material = SubResource("StandardMaterial3D_3wgkc")
 add_uv2 = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7pegk"]
-size = Vector3(1.5, 1, 1.5)
+size = Vector3(1.5, 0.8, 1.5)
 
 [node name="Cube" type="CharacterBody3D"]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_4skhh")
-gravity = 10.0
+gravity = 0.5
 friction = 10.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Hitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_nu0wi")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]

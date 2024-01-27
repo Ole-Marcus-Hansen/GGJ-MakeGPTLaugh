@@ -11,6 +11,7 @@ class_name Cube
 @export var friction: float = 100
 
 
+var spawned := false
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
@@ -41,13 +42,24 @@ func set_colour(colour: Color) -> void:
 
 
 func _ready() -> void:
-	add_to_group("cubes")
+	if spawned: $Hitbox.disabled = true
 	%Mesh.mesh.material.albedo_texture = %Viewport.get_texture()
+	if Engine.is_editor_hint(): return
+	add_to_group("cubes")
 
-func play_spawn_animation(pos: Vector3) -> void:
+
+
+func play_spawn_animation(pos: Vector3, upward_force: float) -> void:
 	%Mesh.scale = Vector3.ZERO
 	
-	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-	tween.tween_property(%Mesh, ^"scale", Vector3.ONE, 1)
-	#tween.tween_property(self, ^"scale", Vector3.ONE, 1)
+	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK).set_parallel()
+	tween.tween_property(%Mesh, ^"scale", Vector3.ONE, .5)
+	tween.tween_property(self, ^"global_position:x", pos.x, 1).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(self, ^"global_position:z", pos.z, 1).set_trans(Tween.TRANS_QUAD)
+	
+	velocity.y = upward_force
+	
+	await tween.finished
+	$Hitbox.disabled = false
+	
 
