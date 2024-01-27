@@ -53,9 +53,32 @@ func _http_request_completed(result, response_code, headers, body):
 	var message = response["choices"][0]["message"]["content"]
 	print("message: " + message)
 	
-	json.parse(message)
-	var message_split = json.get_data()
+	#json.parse(message)
+	#var message_split = json.get_data()
+	
+	var start_index = message.find("{")
+
+	if start_index != -1:
+		# Find the position of the last '}' character in the input string
+		var end_index = message.rfind("}")
+
+		if end_index != -1:
+			# Extract the JSON string
+			var json_string = message.substr(start_index, end_index - start_index + 1)
+
+			# Parse the JSON string into a Dictionary
+			if json.parse(json_string) == OK:
+				var message_split = json.get_data()
+				if message_split:
+					#print("split: " + str(message_split["rating"]) + ", " + message_split["comment"])
+					completed.emit(message_split["rating"], message_split["comment"])
+					return
+			else:
+				print("Failed to parse JSON object")
+		else:
+			print("No closing '}' found in the input string")
+	else:
+		print("No opening '{' found in the input string")
 	
 	#print("split: " + str(message_split["rating"]) + ", " + message_split["comment"])
-	
-	completed.emit(message_split["rating"], message_split["comment"])
+	completed.emit(10, "HAHAHA. The joke was so bad it almost made my program crash. Since it made me laugh you will get to keep going")
