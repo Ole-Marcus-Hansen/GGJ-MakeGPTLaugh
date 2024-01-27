@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ljlce7b3vt7g"]
+
+[ext_resource type="Texture2D" uid="uid://cnekypfqxnomp" path="res://Game/Textures/concreteTiles.png" id="1_cy0py"]
+
+[resource]
+albedo_texture = ExtResource("1_cy0py")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+texture_filter = 0
