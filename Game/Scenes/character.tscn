@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cc1m2a1obsyn4"]
 
-[ext_resource type="Script" path="res://Game/Scripts/character.gd" id="1_0t4e8"]
+[ext_resource type="Script" path="res://Game/Scripts/Character.gd" id="1_ie4a0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uy03j"]
 
@@ -202,7 +202,7 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_k4wwl"]
 
 [node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH")]
-script = ExtResource("1_0t4e8")
+script = ExtResource("1_ie4a0")
 HEAD = NodePath("Head")
 CAMERA = NodePath("Head/Camera")
 HEADBOB_ANIMATION = NodePath("Head/HeadbobAnimation")

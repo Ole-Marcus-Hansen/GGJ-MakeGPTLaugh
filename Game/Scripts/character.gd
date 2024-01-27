@@ -132,9 +132,10 @@ func handle_movement(delta, input_dir):
 	
 	for col_idx in get_slide_collision_count():
 		var col := get_slide_collision(col_idx)
-		if col.get_collider() is RigidBody3D:
-			col.get_collider().apply_central_impulse(-col.get_normal() * 0.3)
-			col.get_collider().apply_impulse(-col.get_normal() * 0.1, col.get_position())
+		if col.get_collider() is Cube:
+			col.get_collider().push(last_velocity)
+			#col.get_collider().apply_impulse(-col.get_normal() * 100 * delta, col.get_position() - col.get_collider().global_position)
+	
 	
 	if in_air_momentum:
 		if is_on_floor():
