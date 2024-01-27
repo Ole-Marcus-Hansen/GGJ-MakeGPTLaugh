@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bnsdhevlmxcwb"
-path="res://.godot/imported/InputStructure.glb-9503a1a43a11fe36a939540026e533f6.scn"
+uid="uid://dnhe2hnoojans"
+path="res://.godot/imported/OutputStructure.glb-3c23b101ffa31b19d45d7c7d13ee4d4b.scn"
 
 [deps]
 
-source_file="res://Game/Models/InputStructure.glb"
-dest_files=["res://.godot/imported/InputStructure.glb-9503a1a43a11fe36a939540026e533f6.scn"]
+source_file="res://Game/Models/OutputStructure.glb"
+dest_files=["res://.godot/imported/OutputStructure.glb-3c23b101ffa31b19d45d7c7d13ee4d4b.scn"]
 
 [params]
 
