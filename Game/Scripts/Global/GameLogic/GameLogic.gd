@@ -19,6 +19,7 @@ var target_rating = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	APIManager.completed.connect(interpret_gpt_feedback)
+	await get_tree().create_timer(1).timeout
 	reset_map()
 
 
@@ -116,6 +117,8 @@ func reset_map():
 		required_verbs, required_adjectives, required_pronouns, 
 		required_interrogatives)
 	
+	print(word_lists)
+	
 	spawn_cubes(word_lists)
 	
 	
@@ -143,6 +146,7 @@ func spawn_cubes(word_lists):
 	if spawners.is_empty():
 		return
 		
+	print("test")
 	var index = 0
 	for word_class in word_lists:
 		
@@ -150,10 +154,12 @@ func spawn_cubes(word_lists):
 		
 		for word in word_lists[word_class]["words"]:
 			
+			await get_tree().create_timer(0.3).timeout
+			
 			if index == len(spawners):
-				index == 0
+				index = 0
 				
 			var spawner: Spawner = spawners[index]
 			spawner.spawn(word, word_class, color)
-	
-	index += 1
+			print("spawning: " + word)
+			index += 1

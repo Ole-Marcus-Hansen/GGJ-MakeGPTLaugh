@@ -146,7 +146,6 @@ func pick_words(nouns: int, verbs: int, adjectives: int, pronouns: int,
 			num_words_to_select = adjectives
 		elif word_class == "interrogatives":
 			num_words_to_select = interrogatives
-			print(word_lists[word_class]["words"])
 		elif word_class == "nouns":
 			num_words_to_select = nouns
 		elif word_class == "pronouns":
