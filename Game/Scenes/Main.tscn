@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://bo5fp3ijsjd0b"]
+
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Game/Scenes/character.tscn" id="1_o2luc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ga82"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_rfcc3"]
+sky_material = SubResource("ProceduralSkyMaterial_4ga82")
+
+[sub_resource type="Environment" id="Environment_thki7"]
+background_mode = 2
+sky = SubResource("Sky_rfcc3")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ihcqd"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3e3hc"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nu0wi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxlde"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4uwrr"]
+material = SubResource("StandardMaterial3D_oxlde")
+
+[node name="Root" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_thki7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_ihcqd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_3e3hc")
+
+[node name="Character" parent="." node_paths=PackedStringArray("test") instance=ExtResource("1_o2luc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+test = NodePath("../RigidBody3D")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.046, -1.885)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_nu0wi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_4uwrr")
