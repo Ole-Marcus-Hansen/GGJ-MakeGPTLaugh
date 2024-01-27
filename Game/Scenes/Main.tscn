@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bo5fp3ijsjd0b"]
+[gd_scene load_steps=11 format=3 uid="uid://bo5fp3ijsjd0b"]
 
-[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Game/Scenes/character.tscn" id="1_o2luc"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Game/Scenes/Character.tscn" id="1_o2luc"]
+[ext_resource type="Script" path="res://Game/Scripts/Cube.gd" id="2_c7l1f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ga82"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -45,18 +46,18 @@ shape = SubResource("BoxShape3D_ihcqd")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_3e3hc")
 
-[node name="Character" parent="." node_paths=PackedStringArray("test") instance=ExtResource("1_o2luc")]
+[node name="Character" parent="." instance=ExtResource("1_o2luc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-test = NodePath("../RigidBody3D")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="Cube" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.046, -1.885)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+script = ExtResource("2_c7l1f")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube"]
 shape = SubResource("BoxShape3D_nu0wi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cube"]
 mesh = SubResource("BoxMesh_4uwrr")
