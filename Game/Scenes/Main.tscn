@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bo5fp3ijsjd0b"]
+[gd_scene load_steps=13 format=3 uid="uid://bo5fp3ijsjd0b"]
 
 [ext_resource type="Material" uid="uid://85orxm5dwfge" path="res://Game/Materials/concreteBrown.tres" id="1_53ma2"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Game/Scenes/character.tscn" id="1_o2luc"]
+[ext_resource type="Material" uid="uid://ljlce7b3vt7g" path="res://Game/Materials/concreteTiles.tres" id="1_v03hj"]
+[ext_resource type="PackedScene" uid="uid://ve47lvljx6eb" path="res://Game/Models/InputStructure.blend" id="3_3ubo8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ga82"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -44,7 +46,7 @@ shadow_enabled = true
 shape = SubResource("BoxShape3D_ihcqd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-material_override = ExtResource("1_53ma2")
+material_override = ExtResource("1_v03hj")
 mesh = SubResource("BoxMesh_3e3hc")
 
 [node name="Character" parent="." node_paths=PackedStringArray("test") instance=ExtResource("1_o2luc")]
@@ -62,3 +64,11 @@ shape = SubResource("BoxShape3D_nu0wi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("BoxMesh_4uwrr")
+
+[node name="InputStructure" parent="." instance=ExtResource("3_3ubo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
+
+[node name="Cube" parent="InputStructure" index="0"]
+surface_material_override/0 = ExtResource("1_53ma2")
+
+[editable path="InputStructure"]
