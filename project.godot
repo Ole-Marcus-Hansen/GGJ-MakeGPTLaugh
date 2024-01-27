@@ -14,6 +14,10 @@ config/name="GGJ-GPTChat"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+APIManager="*res://Game/Scripts/Global/APIManager.gd"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
