@@ -39,9 +39,6 @@ func _ready() -> void:
 	for c in get_children():
 		if c is SpawnPosition:
 			spawn_locations.append(c)
-	
-	await get_tree().create_timer(2).timeout
-	spawn("Test", Color.RED)
 
 
 
