@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bo5fp3ijsjd0b"]
+[gd_scene load_steps=30 format=3 uid="uid://bo5fp3ijsjd0b"]
 
 [ext_resource type="PackedScene" uid="uid://c6m6es6dfclkj" path="res://Game/Scenes/Player.tscn" id="1_o2luc"]
 [ext_resource type="Material" uid="uid://ljlce7b3vt7g" path="res://Game/Materials/concreteTiles.tres" id="1_v03hj"]
@@ -240,6 +240,12 @@ size = Vector3(2, 2, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mkkp1"]
 size = Vector3(1, 5, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dc42n"]
+size = Vector3(2.5, 1.5, 2.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p6v07"]
+size = Vector3(2.5, 1.5, 2.5)
+
 [node name="Root" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -286,10 +292,6 @@ transform = Transform3D(9.84808, 1.73648, 0, -1.73648, 9.84808, 0, 0, 0, 10, -10
 [node name="Cube" parent="RobotScreen" index="0"]
 mesh = SubResource("ArrayMesh_cvg0g")
 
-[node name="Cube" parent="." instance=ExtResource("10_rhgqd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.251055, 1.42208, -0.560676)
-word = "The"
-
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 script = ExtResource("11_s2g35")
@@ -297,16 +299,21 @@ script = ExtResource("11_s2g35")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_be0lv")
 
+[node name="Cube2" parent="." node_paths=PackedStringArray("area") instance=ExtResource("10_rhgqd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72752, 2, 3.63581)
+word = "What"
+area = NodePath("../Cube/Area")
+
 [node name="Button" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 script = ExtResource("12_510r0")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Button"]
+[node name="PressurePlate" type="StaticBody3D" parent="Button"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Button/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button/PressurePlate"]
 shape = SubResource("BoxShape3D_tpp33")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Button/StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Button/PressurePlate"]
 mesh = SubResource("BoxMesh_enq2s")
 skeleton = NodePath("../..")
 
@@ -314,6 +321,28 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Button/Area3D"]
 shape = SubResource("BoxShape3D_mkkp1")
+
+[node name="Frame" type="StaticBody3D" parent="Button"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button/Frame"]
+shape = SubResource("BoxShape3D_dc42n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Button/Frame"]
+mesh = SubResource("BoxMesh_p6v07")
+
+[node name="Cube" parent="." instance=ExtResource("10_rhgqd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2.48178)
+word = "Did"
+
+[node name="Cube3" parent="." node_paths=PackedStringArray("area") instance=ExtResource("10_rhgqd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1.22727)
+word = "Dog"
+area = NodePath("../Cube/Area")
+
+[node name="Cube4" parent="." node_paths=PackedStringArray("area") instance=ExtResource("10_rhgqd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -4.74397)
+word = "Do"
+area = NodePath("../Cube/Area")
 
 [connection signal="body_shape_entered" from="Button/Area3D" to="Button" method="_on__body_entered"]
 
