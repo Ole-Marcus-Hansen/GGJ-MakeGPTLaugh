@@ -90,7 +90,11 @@ func reset_map():
 	
 	if num_remaining_cubes < TOTAL_WORDS:
 		
-		for cube: Cube in cubes:
+		for cube in cubes:
+			
+			if not cube is Cube:
+				continue
+			
 			if cube.word_class == "adjective":
 				remaining_adjectives +=1
 			elif cube.word_class == "interrogative":
