@@ -39,5 +39,3 @@ func _physics_process(delta: float) -> void:
 
 func _ready() -> void:
 	%Mesh.mesh.material.albedo_texture = %Viewport.get_texture()
-
-

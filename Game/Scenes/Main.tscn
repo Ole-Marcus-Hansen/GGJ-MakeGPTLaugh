@@ -6,9 +6,9 @@
 [ext_resource type="Material" uid="uid://85orxm5dwfge" path="res://Game/Materials/concreteBrown.tres" id="4_nbk4k"]
 [ext_resource type="PackedScene" uid="uid://dnhe2hnoojans" path="res://Game/Models/OutputStructure.glb" id="5_cet80"]
 [ext_resource type="PackedScene" uid="uid://yqjrsb83htlu" path="res://Game/Models/RobotScreen.glb" id="6_2ty8h"]
-[ext_resource type="Material" uid="uid://crfxvpu1pdosc" path="res://Game/Materials/steel.tres" id="6_bhcka"]
-[ext_resource type="Material" uid="uid://ditdey8bd1or8" path="res://Game/Materials/bronze.tres" id="7_sqs4n"]
-[ext_resource type="Material" uid="uid://dmp8lvludwc46" path="res://Game/Materials/screen.tres" id="8_abf6p"]
+[ext_resource type="Material" path="res://Game/Materials/steel.tres" id="6_bhcka"]
+[ext_resource type="Material" path="res://Game/Materials/bronze.tres" id="7_sqs4n"]
+[ext_resource type="Material" path="res://Game/Materials/screen.tres" id="8_abf6p"]
 [ext_resource type="PackedScene" uid="uid://et78jj32du4e" path="res://Game/Scenes/Cube.tscn" id="10_rhgqd"]
 [ext_resource type="Script" path="res://Game/Scenes/BoxArea.gd" id="11_s2g35"]
 
@@ -250,7 +250,6 @@ mesh = SubResource("BoxMesh_3e3hc")
 
 [node name="Character" parent="." instance=ExtResource("1_o2luc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 0)
-initial_facing_direction = Vector3(30, 90, 0)
 
 [node name="InputStructure" parent="." instance=ExtResource("3_46q5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
@@ -261,7 +260,7 @@ material_override = ExtResource("4_nbk4k")
 [node name="OutputStructure2" parent="." instance=ExtResource("5_cet80")]
 transform = Transform3D(-0.939692, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939692, 0, 0.5, 8)
 
-[node name="Cube" parent="OutputStructure2" index="0"]
+[node name="Cube" parent="OutputStructure2" index="0" groups=["cubes"]]
 mesh = SubResource("ArrayMesh_d1q8q")
 
 [node name="OutputStructure" parent="." instance=ExtResource("5_cet80")]
