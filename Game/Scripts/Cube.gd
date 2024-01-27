@@ -31,8 +31,7 @@ func _physics_process(delta: float) -> void:
 					velocity[i] = GameLogic.player.velocity[i]
 				break
 	
-	if not is_on_floor():
-		velocity.y -= gravity
+	velocity.y -= gravity
 	
 	move_and_slide()
 	velocity = velocity.move_toward(Vector3.ZERO, friction * delta)
@@ -63,5 +62,13 @@ func play_spawn_animation(pos: Vector3, upward_force: float) -> void:
 	
 	await tween.finished
 	$Hitbox.disabled = false
-	
+
+
+func remove() -> void:
+	collision_layer = 0
+	collision_mask = 0
+	remove_from_group("cubes")
+	await get_tree().create_timer(1).timeout
+	queue_free()
+
 

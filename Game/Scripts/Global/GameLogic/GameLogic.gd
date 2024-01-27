@@ -51,8 +51,9 @@ func check_words_and_evaluate():
 	var input_joke: String = ""
 	for cube in cubes:
 		input_joke += cube.word + " "
+		cube.remove()
 		
-	input_joke = input_joke.left(-1)	
+	input_joke = input_joke.left(-1)
 	
 	APIManager.callGPT(input_joke)
 
