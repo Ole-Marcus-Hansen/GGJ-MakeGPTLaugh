@@ -9,9 +9,12 @@ const TOTAL_WORDS = TOTAL_ADJECTIVES + TOTAL_INTERROGATIVES + TOTAL_NOUNS + \
 	TOTAL_PRONOUNS + TOTAL_VERBS
 
 var player: Player
+var main_screen: Node3D = get_tree().current_scene
+#var player_camera: Camera3D = player.CAMERA
+#var screen_camera: Camera3D = screen.CAMERA
 var submit_area: Area3D
 var has_submitted = false
-var is_evaluating = false
+var game_active = false
 var target_rating = 1
 
 @export var curve: Curve
@@ -19,17 +22,14 @@ var target_rating = 1
 
 func _ready():
 	# Called when the node enters the scene tree for the first time.
-	APIManager.completed.connect(interpret_gpt_feedback)
-	await get_tree().create_timer(1).timeout
-	reset_map()
+	pass
 
 
 func _process(delta):
 	# Called every frame
 	
-	if has_submitted and not is_evaluating:
-		check_words_and_evaluate()
-		has_submitted = true
+	if not game_active:
+		switch_to_main_menu()
 		
 	
 
@@ -76,7 +76,16 @@ func interpret_gpt_feedback(rating: int, comment: String):
 	# 3. Laugh-o-meter???
 	# 4. Handle game over or next level
 	pass
-	
+
+
+func play_game():
+	# Called when game starts
+	APIManager.completed.connect(interpret_gpt_feedback)
+	var player_camera: Camera3D = player.CAMERA
+	player_camera.make_current
+	await get_tree().create_timer(1).timeout
+	reset_map()
+
 	
 func reset_map():
 	# Set or reset map to default
@@ -168,3 +177,8 @@ func spawn_cubes(word_lists):
 			spawner.spawn(word, word_class, color)
 			print("spawning: " + word)
 			index += 1
+
+
+func switch_to_main_menu():
+	var main_screen_camera: Camera3D = main_screen.get_node("Camera3D")
+	main_screen_camera.make_current()

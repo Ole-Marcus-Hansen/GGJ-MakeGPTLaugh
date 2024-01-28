@@ -6,11 +6,11 @@
 [ext_resource type="Material" uid="uid://85orxm5dwfge" path="res://Game/Materials/concreteBrown.tres" id="4_nbk4k"]
 [ext_resource type="PackedScene" uid="uid://dnhe2hnoojans" path="res://Game/Models/OutputStructure.glb" id="5_cet80"]
 [ext_resource type="PackedScene" uid="uid://yqjrsb83htlu" path="res://Game/Models/RobotScreen.glb" id="6_2ty8h"]
-[ext_resource type="Material" uid="uid://crfxvpu1pdosc" path="res://Game/Materials/steel.tres" id="6_bhcka"]
-[ext_resource type="Material" uid="uid://ditdey8bd1or8" path="res://Game/Materials/bronze.tres" id="7_sqs4n"]
-[ext_resource type="Material" uid="uid://dmp8lvludwc46" path="res://Game/Materials/screen.tres" id="8_abf6p"]
+[ext_resource type="Material" path="res://Game/Materials/steel.tres" id="6_bhcka"]
+[ext_resource type="Material" path="res://Game/Materials/bronze.tres" id="7_sqs4n"]
+[ext_resource type="Material" path="res://Game/Materials/screen.tres" id="8_abf6p"]
 [ext_resource type="Script" path="res://Game/Scripts/ScreenPlane.gd" id="10_t4dad"]
-[ext_resource type="PackedScene" uid="uid://70xef651ensh" path="res://Game/Scenes/Screen.tscn" id="11_akj8p"]
+[ext_resource type="PackedScene" path="res://Game/Scenes/Screen.tscn" id="11_akj8p"]
 [ext_resource type="Script" path="res://Game/Scenes/BoxArea.gd" id="11_s2g35"]
 [ext_resource type="Script" path="res://Game/Scenes/Button.gd" id="12_510r0"]
 [ext_resource type="PackedScene" uid="uid://cqr1g1xpmpvjg" path="res://Game/Models/Wall.glb" id="13_7xfcl"]
@@ -445,6 +445,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.906125, -4.29361, -5.95613)
 
 [node name="SpawnPosition11" parent="Spawner2" instance=ExtResource("15_64hg4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01569, -4.29361, -7.36009)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.00436351, 0.329688, 0.94408, 0, 0.944089, -0.329691, -0.999991, -0.00143861, -0.00411954, 29.4556, 50.7565, -1.64619)
+current = true
 
 [connection signal="body_shape_entered" from="Button/Area3D" to="Button" method="_on__body_entered"]
 [connection signal="body_shape_exited" from="Button/Area3D" to="Button" method="_on_body_exited"]
