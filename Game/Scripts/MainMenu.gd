@@ -2,6 +2,7 @@ extends Node2D
 
 
 func display() -> void:
+	show()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
