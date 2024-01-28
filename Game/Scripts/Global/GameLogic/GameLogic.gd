@@ -27,9 +27,9 @@ func _process(delta):
 	# Called every frame
 	
 	if not game_active:
+		clear_map()
 		switch_to_main_menu()
 		
-	
 
 func check_words_and_evaluate():
 	# Check word blocks from map and then call APIManager
@@ -57,7 +57,14 @@ func check_words_and_evaluate():
 	
 	APIManager.callGPT(input_joke)
 
-	
+
+func clear_map():
+	# Remove all cubes
+	var cubes = get_tree().get_nodes_in_group("cubes")
+	for cube in cubes:
+		cube.queue_free()
+
+
 func interpret_gpt_feedback(rating: int, comment: String):
 	# Interpret the feedback from Chat GPT and make things happen in the game
 	
