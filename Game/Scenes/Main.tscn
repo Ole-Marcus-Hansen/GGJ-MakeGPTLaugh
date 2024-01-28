@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bo5fp3ijsjd0b"]
+[gd_scene load_steps=38 format=3 uid="uid://bo5fp3ijsjd0b"]
 
 [ext_resource type="PackedScene" uid="uid://c6m6es6dfclkj" path="res://Game/Scenes/Player.tscn" id="1_o2luc"]
 [ext_resource type="Material" uid="uid://ljlce7b3vt7g" path="res://Game/Materials/concreteTiles.tres" id="1_v03hj"]
@@ -6,13 +6,14 @@
 [ext_resource type="Material" uid="uid://85orxm5dwfge" path="res://Game/Materials/concreteBrown.tres" id="4_nbk4k"]
 [ext_resource type="PackedScene" uid="uid://dnhe2hnoojans" path="res://Game/Models/OutputStructure.glb" id="5_cet80"]
 [ext_resource type="PackedScene" uid="uid://yqjrsb83htlu" path="res://Game/Models/RobotScreen.glb" id="6_2ty8h"]
-[ext_resource type="Material" path="res://Game/Materials/steel.tres" id="6_bhcka"]
-[ext_resource type="Material" path="res://Game/Materials/bronze.tres" id="7_sqs4n"]
-[ext_resource type="Material" path="res://Game/Materials/screen.tres" id="8_abf6p"]
+[ext_resource type="Material" uid="uid://crfxvpu1pdosc" path="res://Game/Materials/steel.tres" id="6_bhcka"]
+[ext_resource type="Material" uid="uid://ditdey8bd1or8" path="res://Game/Materials/bronze.tres" id="7_sqs4n"]
+[ext_resource type="Material" uid="uid://dmp8lvludwc46" path="res://Game/Materials/screen.tres" id="8_abf6p"]
 [ext_resource type="Script" path="res://Game/Scripts/ScreenPlane.gd" id="10_t4dad"]
 [ext_resource type="PackedScene" uid="uid://lhhotinlsamm" path="res://Game/Scenes/Screen.tscn" id="11_akj8p"]
 [ext_resource type="Script" path="res://Game/Scenes/BoxArea.gd" id="11_s2g35"]
 [ext_resource type="Script" path="res://Game/Scenes/Button.gd" id="12_510r0"]
+[ext_resource type="Material" uid="uid://bf4upm5rfe03e" path="res://Game/Materials/inputField.tres" id="13_3irpt"]
 [ext_resource type="PackedScene" uid="uid://cqr1g1xpmpvjg" path="res://Game/Models/Wall.glb" id="13_7xfcl"]
 [ext_resource type="PackedScene" uid="uid://ba1bbxcxr2o6k" path="res://Game/Scenes/Spawning/Spawner.tscn" id="14_3sgtm"]
 [ext_resource type="PackedScene" uid="uid://crakygybe67sl" path="res://Game/Scenes/Spawning/SpawnPosition.tscn" id="15_64hg4"]
@@ -241,6 +242,9 @@ size = Vector2(20, 15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_be0lv"]
 size = Vector3(2, 5, 10)
 
+[sub_resource type="QuadMesh" id="QuadMesh_2oeps"]
+size = Vector2(10, 2)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_tpp33"]
 size = Vector3(2, 1.6, 2)
 
@@ -320,6 +324,32 @@ script = ExtResource("11_s2g35")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_be0lv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0.51, 0)
+material_override = ExtResource("13_3irpt")
+mesh = SubResource("QuadMesh_2oeps")
+
+[node name="Label3D" type="Label3D" parent="Area3D"]
+transform = Transform3D(-0.000104709, 0, 1, 0.144114, 0.989561, 1.50901e-05, -0.989561, 0.144114, -0.000103616, -0.991327, 1.86496, 1.12115)
+modulate = Color(0, 0, 0, 1)
+text = "PUSH WORDS HERE |
+                                     \\/"
+font_size = 80
+
+[node name="Label3D2" type="Label3D" parent="Area3D"]
+transform = Transform3D(0.598434, -0.376665, 0.707107, 0.532684, 0.846314, 0, -0.598434, 0.376665, 0.707107, -0.0757198, 2.72371, -5.91909)
+modulate = Color(0, 0, 0, 1)
+text = "MAKE ME LAUGH
+      <--------"
+font_size = 60
+
+[node name="Label3D3" type="Label3D" parent="Area3D"]
+transform = Transform3D(-0.656236, -0.263353, 0.707107, -0.372437, 0.928057, 0, -0.656236, -0.263353, -0.707107, 0.814236, 2.47409, 6.81045)
+modulate = Color(0, 0, 0, 1)
+text = "INPUT ->
+"
+font_size = 119
 
 [node name="Button" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.160685, 0)
