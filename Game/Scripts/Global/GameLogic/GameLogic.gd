@@ -9,9 +9,6 @@ const TOTAL_WORDS = TOTAL_ADJECTIVES + TOTAL_INTERROGATIVES + TOTAL_NOUNS + \
 	TOTAL_PRONOUNS + TOTAL_VERBS
 
 var player: Player
-var main_screen: Node3D = get_tree().current_scene
-#var player_camera: Camera3D = player.CAMERA
-#var screen_camera: Camera3D = screen.CAMERA
 var submit_area: Area3D
 var screen: Screen
 var has_submitted = false
@@ -182,6 +179,6 @@ func spawn_cubes(word_lists):
 
 func switch_to_main_menu():
 	game_active = false
-	var main_screen_camera: Camera3D = main_screen.get_node("Camera3D")
+	var main_screen_camera: Camera3D = get_tree().current_scene.get_node("Camera3D")
 	main_screen_camera.make_current()
 	screen.display_main_menu()
