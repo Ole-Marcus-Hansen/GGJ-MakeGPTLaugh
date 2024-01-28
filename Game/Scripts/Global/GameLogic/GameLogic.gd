@@ -146,7 +146,7 @@ func set_target_rating():
 	# Set target rating player must achieve to survive
 	
 	var rng = RandomNumberGenerator.new()
-	var randfloat = rng.randf_range(0.1, 0.999)
+	var randfloat = rng.randf_range(0, 1)
 	var curve_y = curve.sample(randfloat)	
 	target_rating = floori(curve_y * 10)
 
