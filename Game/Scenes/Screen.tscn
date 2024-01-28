@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://70xef651ensh"]
+[gd_scene load_steps=9 format=3 uid="uid://lhhotinlsamm"]
 
 [ext_resource type="Shader" path="res://Game/Scripts/Screen.gdshader" id="1_5csgi"]
 [ext_resource type="Script" path="res://Game/Scripts/Screen.gd" id="1_amiw6"]

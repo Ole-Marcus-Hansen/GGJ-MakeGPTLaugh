@@ -23,7 +23,7 @@ var target_rating = 1
 
 func _ready():
 	# Called when the node enters the scene tree for the first time.
-	pass
+	APIManager.completed.connect(interpret_gpt_feedback)
 
 
 func _process(delta):
@@ -42,6 +42,7 @@ func check_words_and_evaluate():
 	
 	has_submitted = true
 	
+	screen.display_processing()
 	var bodies = submit_area.get_overlapping_bodies()
 	var cubes = []
 	for body in bodies:
@@ -67,7 +68,8 @@ func interpret_gpt_feedback(rating: int, comment: String):
 	
 	if rating < target_rating:
 		# Game Over
-		print("you lost")
+		await screen.display_angry()
+		switch_to_main_menu()
 		return
 	
 	reset_map()
@@ -81,7 +83,8 @@ func interpret_gpt_feedback(rating: int, comment: String):
 
 func play_game():
 	# Called when game starts
-	APIManager.completed.connect(interpret_gpt_feedback)
+	
+	screen.display_default()
 	var player_camera: Camera3D = player.CAMERA
 	player_camera.make_current
 	await get_tree().create_timer(1).timeout
@@ -183,3 +186,4 @@ func spawn_cubes(word_lists):
 func switch_to_main_menu():
 	var main_screen_camera: Camera3D = main_screen.get_node("Camera3D")
 	main_screen_camera.make_current()
+	screen.display_main_menu()
