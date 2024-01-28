@@ -16,8 +16,9 @@ func _ready() -> void:
 	hide_all()
 	%CRT.show()
 	GameLogic.screen = self
-	display_default()
+	#display_default()
 	#await get_tree().create_timer(1).timeout
+	#display_rating(3)
 	#await display_happy()
 	#await get_tree().create_timer(1).timeout
 	#await display_processing()
@@ -33,6 +34,7 @@ func hide_all(clear_text := false) -> void:
 	%DieText.visible_ratio = 0
 	%LaughText.visible_ratio = 0
 	%Comment.visible_characters = 0
+	%Rating.text = ""
 
 
 func display_angry() -> void:
@@ -66,8 +68,9 @@ func display_processing() -> void:
 	tween.tween_interval(1)
 	await tween.finished
 
-func display_rating() -> void:
-	pass
+func display_rating(rating: int = 10) -> void:
+	hide_all()
+	%Rating.text = "%s/10" % rating
 
 func display_comment(comment: String) -> void:
 	%Comment.text = comment
@@ -78,7 +81,8 @@ func display_comment(comment: String) -> void:
 	tween.tween_interval(3)
 	await tween.finished
 
-
+func display_main_menu() -> void:
+	pass
 
 
 

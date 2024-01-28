@@ -79,6 +79,8 @@ func _ready():
 
 
 func _physics_process(delta):
+	if !GameLogic.game_active: return
+	
 	current_speed = Vector3.ZERO.distance_to(get_real_velocity())
 	
 	# Gravity
@@ -239,6 +241,7 @@ func headbob_animation(moving):
 
 
 func _process(_delta):
+	if !GameLogic.game_active: return
 	
 	#if Input.is_action_just_pressed(PAUSE):
 		#if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -251,6 +254,8 @@ func _process(_delta):
 
 
 func _unhandled_input(event):
+	if !GameLogic.game_active: return
+	
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		HEAD.rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		HEAD.rotation_degrees.x -= event.relative.y * mouse_sensitivity

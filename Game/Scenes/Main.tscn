@@ -446,6 +446,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.906125, -4.29361, -5.95613)
 [node name="SpawnPosition11" parent="Spawner2" instance=ExtResource("15_64hg4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01569, -4.29361, -7.36009)
 
+[node name="Camera3D" type="Camera3D" parent="."]
+
 [connection signal="body_shape_entered" from="Button/Area3D" to="Button" method="_on__body_entered"]
 [connection signal="body_shape_exited" from="Button/Area3D" to="Button" method="_on_body_exited"]
 
