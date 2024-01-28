@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://chicpacjlxc6f"]
 
 [ext_resource type="Script" path="res://Game/Scripts/MainMenu.gd" id="1_pya5y"]
-[ext_resource type="Texture2D" uid="uid://df68sfnroevy0" path="res://Game/Textures/robot_angry.png" id="2_ah6q4"]
+[ext_resource type="Texture2D" uid="uid://jmx01aqv7b7j" path="res://Game/Textures/pointer.png" id="2_kfio2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ipfg"]
 
@@ -22,13 +22,15 @@ metadata/_edit_horizontal_guides_ = [1496.0]
 
 [node name="Mouse" type="Area2D" parent="."]
 unique_name_in_owner = true
+z_index = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse"]
 shape = SubResource("CircleShape2D_7ipfg")
 
 [node name="RobotAngry" type="Sprite2D" parent="Mouse"]
-scale = Vector2(61.8, 51.4)
-texture = ExtResource("2_ah6q4")
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = ExtResource("2_kfio2")
 
 [node name="Play" type="Area2D" parent="."]
 unique_name_in_owner = true
