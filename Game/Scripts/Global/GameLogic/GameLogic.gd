@@ -13,6 +13,7 @@ var main_screen: Node3D = get_tree().current_scene
 #var player_camera: Camera3D = player.CAMERA
 #var screen_camera: Camera3D = screen.CAMERA
 var submit_area: Area3D
+var screen: Screen
 var has_submitted = false
 var game_active = false
 var target_rating = 1
@@ -62,7 +63,7 @@ func check_words_and_evaluate():
 func interpret_gpt_feedback(rating: int, comment: String):
 	# Interpret the feedback from Chat GPT and make things happen in the game
 	
-	
+	screen.display_comment(comment)
 	
 	if rating < target_rating:
 		# Game Over
