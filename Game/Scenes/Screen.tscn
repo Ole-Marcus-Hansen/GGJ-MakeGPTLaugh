@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://70xef651ensh"]
+[gd_scene load_steps=9 format=3 uid="uid://70xef651ensh"]
 
 [ext_resource type="Shader" path="res://Game/Scripts/Screen.gdshader" id="1_5csgi"]
+[ext_resource type="Script" path="res://Game/Scripts/Screen.gd" id="1_amiw6"]
+[ext_resource type="Texture2D" uid="uid://biu8ol4vojv2" path="res://Game/Textures/robot_default.png" id="2_foyl5"]
+[ext_resource type="Texture2D" uid="uid://df68sfnroevy0" path="res://Game/Textures/robot_angry.png" id="3_4c3e3"]
+[ext_resource type="Texture2D" uid="uid://u5n8yqqqf3fv" path="res://Game/Textures/robot_laugh.png" id="4_5brjg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_20g8d"]
 shader = ExtResource("1_5csgi")
@@ -26,7 +30,28 @@ shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
 
+[sub_resource type="Shader" id="Shader_qwjbu"]
+code = "shader_type canvas_item;
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	
+	if (col.r < .1)
+	{
+		col.a = 0.;
+	}
+	
+	COLOR = col;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqg6k"]
+shader = SubResource("Shader_qwjbu")
+
 [node name="Screen" type="Node2D"]
+script = ExtResource("1_amiw6")
+metadata/_edit_horizontal_guides_ = [1502.0]
+metadata/_edit_vertical_guides_ = [2096.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -56,17 +81,92 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Screen/CenterContainer"]
+[node name="Processing" type="Label" parent="CanvasLayer/Screen/CenterContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 128
-text = "Hello!!!"
+theme_override_font_sizes/font_size = 120
+text = "Processing your puny humor..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Screen"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 155
+
+[node name="DieText" type="RichTextLabel" parent="CanvasLayer/Screen/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "Prepare to [shake level=80 rate=30]DIE[/shake]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="LaughText" type="RichTextLabel" parent="CanvasLayer/Screen/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[wave amp=100]HA HA HA"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Comment" type="RichTextLabel" parent="CanvasLayer/Screen/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 64
+fit_content = true
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+visible_characters_behavior = 1
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+[node name="CRT" type="ColorRect" parent="CanvasLayer2"]
+unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_20g8d")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Faces" type="Node2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+material = SubResource("ShaderMaterial_jqg6k")
+position = Vector2(1000, 750)
+scale = Vector2(130, 130)
+
+[node name="Offset" type="Node2D" parent="Faces"]
+use_parent_material = true
+position = Vector2(0, 1)
+
+[node name="Default" type="Sprite2D" parent="Faces/Offset"]
+unique_name_in_owner = true
+use_parent_material = true
+texture = ExtResource("2_foyl5")
+
+[node name="Angry" type="Sprite2D" parent="Faces"]
+unique_name_in_owner = true
+visible = false
+use_parent_material = true
+texture = ExtResource("3_4c3e3")
+
+[node name="Happy" type="Sprite2D" parent="Faces"]
+unique_name_in_owner = true
+visible = false
+use_parent_material = true
+texture = ExtResource("4_5brjg")

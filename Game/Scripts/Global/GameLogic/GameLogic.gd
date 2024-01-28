@@ -10,6 +10,7 @@ const TOTAL_WORDS = TOTAL_ADJECTIVES + TOTAL_INTERROGATIVES + TOTAL_NOUNS + \
 
 var player: Player
 var submit_area: Area3D
+var screen: Screen
 var has_submitted = false
 var is_evaluating = false
 var target_rating = 1
@@ -61,7 +62,7 @@ func check_words_and_evaluate():
 func interpret_gpt_feedback(rating: int, comment: String):
 	# Interpret the feedback from Chat GPT and make things happen in the game
 	
-	
+	screen.display_comment(comment)
 	
 	if rating < target_rating:
 		# Game Over
