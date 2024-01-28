@@ -10,7 +10,7 @@
 [ext_resource type="Material" path="res://Game/Materials/bronze.tres" id="7_sqs4n"]
 [ext_resource type="Material" path="res://Game/Materials/screen.tres" id="8_abf6p"]
 [ext_resource type="Script" path="res://Game/Scripts/ScreenPlane.gd" id="10_t4dad"]
-[ext_resource type="PackedScene" path="res://Game/Scenes/Screen.tscn" id="11_akj8p"]
+[ext_resource type="PackedScene" uid="uid://70xef651ensh" path="res://Game/Scenes/Screen.tscn" id="11_akj8p"]
 [ext_resource type="Script" path="res://Game/Scenes/BoxArea.gd" id="11_s2g35"]
 [ext_resource type="Script" path="res://Game/Scenes/Button.gd" id="12_510r0"]
 [ext_resource type="PackedScene" uid="uid://cqr1g1xpmpvjg" path="res://Game/Models/Wall.glb" id="13_7xfcl"]

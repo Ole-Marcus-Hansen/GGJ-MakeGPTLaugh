@@ -82,7 +82,7 @@ func display_comment(comment: String) -> void:
 	await tween.finished
 
 func display_main_menu() -> void:
-	pass
+	%MainMenu.display()
 
 
 
