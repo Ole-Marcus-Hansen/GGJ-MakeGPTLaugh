@@ -83,8 +83,12 @@ func _physics_process(delta):
 	if !GameLogic.game_active: return
 	
 	if global_position.y < -25:
+		GameLogic.clear_map()
 		GameLogic.switch_to_main_menu()
+		collision_layer = 1
+		collision_mask = 1
 		global_position = start_position
+		print("DEAD")
 	
 	current_speed = Vector3.ZERO.distance_to(get_real_velocity())
 	
@@ -255,7 +259,10 @@ func _process(_delta):
 			#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	HEAD.rotation.x = clamp(HEAD.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-	
+
+func die() -> void:
+	collision_layer = 0
+	collision_mask = 0
 
 
 func _unhandled_input(event):

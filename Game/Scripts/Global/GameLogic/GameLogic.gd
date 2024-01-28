@@ -77,6 +77,7 @@ func interpret_gpt_feedback(rating: int, comment: String):
 	if rating < target_rating:
 		# Game Over
 		await screen.display_angry()
+		player.die()
 		return
 	
 	await screen.display_happy()
@@ -93,10 +94,11 @@ func play_game():
 	player_camera.make_current()
 	reset_map()
 
-	
+
 func reset_map():
 	# Set or reset map to default
 	
+	has_submitted = false
 	set_target_rating()
 	await screen.display_required_rating(target_rating)
 	
@@ -141,8 +143,8 @@ func reset_map():
 	print(word_lists)
 	
 	spawn_cubes(word_lists)
-	
-	
+
+
 func set_target_rating():
 	# Set target rating player must achieve to survive
 	
@@ -159,7 +161,7 @@ func sort_cubes(cube_1: Cube, cube_2: Cube):
 	var posz_2 = cube_2.global_position.z
 	
 	return posz_1 > posz_2
-	
+
 
 func spawn_cubes(word_lists):
 	# Prepere words and spawn cubes

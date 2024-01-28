@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://chicpacjlxc6f"]
 
 [ext_resource type="Script" path="res://Game/Scripts/MainMenu.gd" id="1_pya5y"]
-[ext_resource type="Texture2D" uid="uid://jmx01aqv7b7j" path="res://Game/Textures/pointer.png" id="2_kfio2"]
+[ext_resource type="Texture2D" uid="uid://dheuhuseaksps" path="res://Game/Textures/pointer.png" id="2_kfio2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ipfg"]
 
