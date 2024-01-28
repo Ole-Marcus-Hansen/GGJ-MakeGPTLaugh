@@ -56,6 +56,7 @@ class_name Player
 # Member variables
 var speed : float = base_speed
 var current_speed : float = 0.0
+var start_position: Vector3
 # States: normal, crouching, sprinting
 var state : String = "normal"
 var low_ceiling : bool = false # This is for when the cieling is too low and the player needs to crouch.
@@ -68,7 +69,7 @@ var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") 
 func _ready():
 	GameLogic.player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
+	start_position = global_position
 	# Set the camera rotation to whatever initial_facing_direction is
 	if initial_facing_direction:
 		HEAD.set_rotation_degrees(initial_facing_direction) # I don't want to be calling this function if the vector is zero
@@ -80,6 +81,10 @@ func _ready():
 
 func _physics_process(delta):
 	if !GameLogic.game_active: return
+	
+	if global_position.y < -25:
+		GameLogic.switch_to_main_menu()
+		global_position = start_position
 	
 	current_speed = Vector3.ZERO.distance_to(get_real_velocity())
 	
