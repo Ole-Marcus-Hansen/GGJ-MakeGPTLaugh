@@ -215,7 +215,7 @@ LEFT = "left"
 RIGHT = "right"
 FORWARD = "forward"
 BACKWARD = "backward"
-PAUSE = ""
+PAUSE = "escape"
 CROUCH = "crouch"
 SPRINT = "sprint"
 in_air_momentum = false
@@ -239,7 +239,7 @@ transform = Transform3D(1, 0, 0, 0, 0.999391, -0.0348995, 0, 0.0348995, 0.999391
 libraries = {
 "": SubResource("AnimationLibrary_o0unb")
 }
-blend_times = [&"RESET", &"RESET", 0.5, &"RESET", &"headbob", 0.5, &"headbob", &"RESET", 0.5]
+blend_times = [&"headbob", &"RESET", 0.5, &"RESET", &"headbob", 0.5, &"RESET", &"RESET", 0.5]
 
 [node name="JumpAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {

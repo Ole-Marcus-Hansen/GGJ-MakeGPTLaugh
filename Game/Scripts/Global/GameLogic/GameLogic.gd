@@ -104,7 +104,6 @@ func reset_map():
 	
 	var cubes = get_tree().get_nodes_in_group("cubes")
 	var num_remaining_cubes = len(cubes)
-	print("remaining cubes: " + str(num_remaining_cubes))
 	
 	var remaining_adjectives = 0
 	var remaining_interrogatives = 0
@@ -134,13 +133,11 @@ func reset_map():
 	var required_pronouns = TOTAL_PRONOUNS - remaining_pronouns
 	var required_verbs = TOTAL_VERBS - remaining_verbs
 	
-	print("adj" + str(required_adjectives))
 	
 	var word_lists: Dictionary = FileManager.pick_words(required_nouns, 
 		required_verbs, required_adjectives, required_pronouns, 
 		required_interrogatives)
 	
-	print(word_lists)
 	
 	spawn_cubes(word_lists)
 
@@ -149,10 +146,10 @@ func set_target_rating():
 	# Set target rating player must achieve to survive
 	
 	var rng = RandomNumberGenerator.new()
-	var randfloat = rng.randf_range(0.1, 0.999)
+	var randfloat = rng.randf_range(0, 1)
 	var curve_y = curve.sample(randfloat)	
 	target_rating = floori(curve_y * 10)
-	print("target rating: " + str(target_rating))
+
 
 func sort_cubes(cube_1: Cube, cube_2: Cube):
 	# Sort cubes by position
@@ -170,7 +167,7 @@ func spawn_cubes(word_lists):
 	if spawners.is_empty():
 		return
 		
-	print("test")
+
 	var index = 0
 	for word_class in word_lists:
 		
@@ -185,7 +182,6 @@ func spawn_cubes(word_lists):
 				
 			var spawner: Spawner = spawners[index]
 			spawner.spawn(word, word_class, color)
-			print("spawning: " + word)
 			index += 1
 
 

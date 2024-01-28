@@ -252,11 +252,11 @@ func headbob_animation(moving):
 func _process(_delta):
 	if !GameLogic.game_active: return
 	
-	#if Input.is_action_just_pressed(PAUSE):
-		#if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		#elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-			#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if Input.is_action_just_pressed(PAUSE):
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	HEAD.rotation.x = clamp(HEAD.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
