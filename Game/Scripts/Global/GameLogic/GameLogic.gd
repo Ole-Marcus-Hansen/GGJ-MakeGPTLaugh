@@ -9,9 +9,6 @@ const TOTAL_WORDS = TOTAL_ADJECTIVES + TOTAL_INTERROGATIVES + TOTAL_NOUNS + \
 	TOTAL_PRONOUNS + TOTAL_VERBS
 
 var player: Player
-var main_screen: Node3D = get_tree().current_scene
-#var player_camera: Camera3D = player.CAMERA
-#var screen_camera: Camera3D = screen.CAMERA
 var submit_area: Area3D
 var screen: Screen
 var has_submitted = false
@@ -24,15 +21,13 @@ var target_rating = 1
 func _ready():
 	# Called when the node enters the scene tree for the first time.
 	APIManager.completed.connect(interpret_gpt_feedback)
+	await get_tree().create_timer(1).timeout
+	switch_to_main_menu()
+	get_tree().root.handle_input_locally = false
 
-
-func _process(delta):
-	# Called every frame
-	
-	if not game_active:
-		switch_to_main_menu()
-		
-	
+func _input(event):
+	if is_instance_valid(screen):
+		screen.get_viewport().push_input(event)
 
 func check_words_and_evaluate():
 	# Check word blocks from map and then call APIManager
@@ -182,6 +177,6 @@ func spawn_cubes(word_lists):
 
 func switch_to_main_menu():
 	game_active = false
-	var main_screen_camera: Camera3D = main_screen.get_node("Camera3D")
+	var main_screen_camera: Camera3D = get_tree().current_scene.get_node("Camera3D")
 	main_screen_camera.make_current()
 	screen.display_main_menu()

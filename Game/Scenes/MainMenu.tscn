@@ -1,19 +1,57 @@
-[gd_scene load_steps=3 format=3 uid="uid://chicpacjlxc6f"]
+[gd_scene load_steps=6 format=3 uid="uid://chicpacjlxc6f"]
 
 [ext_resource type="Script" path="res://Game/Scripts/MainMenu.gd" id="1_pya5y"]
+[ext_resource type="Texture2D" uid="uid://df68sfnroevy0" path="res://Game/Textures/robot_angry.png" id="2_ah6q4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ipfg"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_quqd0"]
+size = Vector2(494, 175)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7el6a"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_pya5y")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0, 0, 0, 1)
+metadata/_edit_vertical_guides_ = [2003.0]
+metadata/_edit_horizontal_guides_ = [1496.0]
 
 [node name="Mouse" type="Area2D" parent="."]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse"]
 shape = SubResource("CircleShape2D_7ipfg")
+
+[node name="RobotAngry" type="Sprite2D" parent="Mouse"]
+scale = Vector2(61.8, 51.4)
+texture = ExtResource("2_ah6q4")
+
+[node name="Play" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(786, 665)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Play"]
+position = Vector2(247, 86.5)
+shape = SubResource("RectangleShape2D_quqd0")
+
+[node name="Panel" type="Panel" parent="Play"]
+offset_right = 493.0
+offset_bottom = 175.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7el6a")
+
+[node name="Label" type="Label" parent="Play/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 128
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
