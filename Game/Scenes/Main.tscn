@@ -246,21 +246,21 @@ size = Vector3(2, 5, 10)
 size = Vector2(10, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tpp33"]
-size = Vector3(2, 1.6, 2)
+size = Vector3(2.5, 1.6, 2.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_enq2s"]
 material = ExtResource("7_sqs4n")
-size = Vector3(2, 1.8, 2)
+size = Vector3(2.5, 1.8, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mkkp1"]
-size = Vector3(1, 5, 1)
+size = Vector3(1.5, 5, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dc42n"]
-size = Vector3(2.5, 1.5, 2.5)
+size = Vector3(3, 1.5, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_p6v07"]
 material = ExtResource("6_bhcka")
-size = Vector3(2.5, 1.5, 2.5)
+size = Vector3(3, 1.5, 3)
 
 [node name="Root" type="Node3D"]
 
@@ -352,7 +352,7 @@ text = "INPUT ->
 font_size = 119
 
 [node name="Button" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.160685, 0)
+transform = Transform3D(0.704163, 0, -0.710038, 0, 1, 0, 0.710038, 0, 0.704163, 4.91719, -0.160685, 3.74604)
 script = ExtResource("12_510r0")
 
 [node name="PressurePlate" type="AnimatableBody3D" parent="Button"]
@@ -377,6 +377,14 @@ shape = SubResource("BoxShape3D_dc42n")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Button/Frame"]
 mesh = SubResource("BoxMesh_p6v07")
 
+[node name="Label3D" type="Label3D" parent="Button"]
+transform = Transform3D(0.103539, 0.994626, -8.74228e-08, -3.44248e-08, 9.14788e-08, 1, 0.994626, -0.103539, 4.37114e-08, -2.4885, 0.661754, 0.216717)
+modulate = Color(0, 0, 0, 1)
+text = " /\\
+ |
+SUBMIT"
+font_size = 80
+
 [node name="Wall" parent="." instance=ExtResource("13_7xfcl")]
 transform = Transform3D(0.00570722, 0, 0.999984, 0, 1, 0, -0.999984, 0, 0.00570722, -3.81026, 0.5, 10.7966)
 
@@ -393,18 +401,21 @@ material_override = ExtResource("4_nbk4k")
 transform = Transform3D(-0.460246, 0, -0.887791, 0, 1, 0, 0.887791, 0, -0.460246, 5.94294, 0.5, -7.42283)
 
 [node name="Cube" parent="Wall3" index="0"]
+transform = Transform3D(0.940964, 0, -0.338508, 0, 1, 0, 0.338508, 0, 0.940964, 0.987205, -4.76837e-07, -0.0419471)
 material_override = ExtResource("4_nbk4k")
 
 [node name="Wall4" parent="." instance=ExtResource("13_7xfcl")]
 transform = Transform3D(-0.929068, 0, -0.369909, 0, 1, 0, 0.369909, 0, -0.929068, 10.0551, 0.5, -2.92304)
 
 [node name="Cube" parent="Wall4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53142, 0, -0.780012)
 material_override = ExtResource("4_nbk4k")
 
 [node name="Wall5" parent="." instance=ExtResource("13_7xfcl")]
 transform = Transform3D(-0.999964, 0, -0.00848221, 0, 1, 0, 0.00848221, 0, -0.999964, 10.6065, 0.5, 2.42172)
 
 [node name="Cube" parent="Wall5" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21027, 0, -0.0984662)
 material_override = ExtResource("4_nbk4k")
 
 [node name="Wall6" parent="." instance=ExtResource("13_7xfcl")]
