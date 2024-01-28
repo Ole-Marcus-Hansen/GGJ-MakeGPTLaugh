@@ -64,26 +64,23 @@ func check_words_and_evaluate():
 func interpret_gpt_feedback(rating: int, comment: String):
 	# Interpret the feedback from Chat GPT and make things happen in the game
 	
-	screen.display_comment(comment)
+	await screen.display_comment(comment)
+	await screen.display_rating(rating)
 	
 	if rating < target_rating:
 		# Game Over
 		await screen.display_angry()
-		switch_to_main_menu()
 		return
 	
+	await screen.display_happy()
+	
 	reset_map()
-	# To do:
-	# 1. Refer to labels on the TV screen to write rating and comment
-	# 2. Happy or angry face
-	# 3. Laugh-o-meter???
-	# 4. Handle game over or next level
-	pass
 
 
 func play_game():
 	# Called when game starts
 	
+	game_active = true
 	screen.display_default()
 	var player_camera: Camera3D = player.CAMERA
 	player_camera.make_current
@@ -184,6 +181,7 @@ func spawn_cubes(word_lists):
 
 
 func switch_to_main_menu():
+	game_active = false
 	var main_screen_camera: Camera3D = main_screen.get_node("Camera3D")
 	main_screen_camera.make_current()
 	screen.display_main_menu()
