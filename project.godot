@@ -24,7 +24,7 @@ GameLogic="*res://Game/Scripts/Global/GameLogic/GameLogic.tscn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/panku_console/plugin.cfg")
+enabled=PackedStringArray("res://addons/panku_console/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [filesystem]
 

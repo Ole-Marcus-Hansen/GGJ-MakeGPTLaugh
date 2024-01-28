@@ -17,15 +17,16 @@ var target_rating = 1
 
 @export var curve: Curve
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
+	# Called when the node enters the scene tree for the first time.
 	APIManager.completed.connect(interpret_gpt_feedback)
 	await get_tree().create_timer(1).timeout
 	reset_map()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# Called every frame
 	
 	if has_submitted and not is_evaluating:
 		check_words_and_evaluate()
