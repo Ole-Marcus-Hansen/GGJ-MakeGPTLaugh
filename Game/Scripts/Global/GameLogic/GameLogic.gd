@@ -21,9 +21,10 @@ var target_rating = 1
 func _ready():
 	# Called when the node enters the scene tree for the first time.
 	APIManager.completed.connect(interpret_gpt_feedback)
-	await get_tree().create_timer(1).timeout
+	#await get_tree().create_timer(1).timeout
+	await get_tree().process_frame
+	await get_tree().process_frame
 	switch_to_main_menu()
-	get_tree().root.handle_input_locally = false
 
 func _input(event):
 	if is_instance_valid(screen):
@@ -37,7 +38,6 @@ func check_words_and_evaluate():
 	
 	has_submitted = true
 	
-	screen.display_processing()
 	var bodies = submit_area.get_overlapping_bodies()
 	var cubes = []
 	for body in bodies:
@@ -53,6 +53,11 @@ func check_words_and_evaluate():
 		
 	input_joke = input_joke.left(-1)
 	
+	if input_joke.is_empty():
+		has_submitted = false
+		return
+	
+	screen.display_processing()
 	APIManager.callGPT(input_joke)
 
 	
@@ -76,10 +81,9 @@ func play_game():
 	# Called when game starts
 	
 	game_active = true
-	screen.display_default()
+	await screen.display_make_me_laugh()
 	var player_camera: Camera3D = player.CAMERA
-	player_camera.make_current
-	await get_tree().create_timer(1).timeout
+	player_camera.make_current()
 	reset_map()
 
 	
@@ -87,6 +91,7 @@ func reset_map():
 	# Set or reset map to default
 	
 	set_target_rating()
+	await screen.display_required_rating(target_rating)
 	
 	var cubes = get_tree().get_nodes_in_group("cubes")
 	var num_remaining_cubes = len(cubes)

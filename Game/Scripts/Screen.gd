@@ -16,6 +16,8 @@ func _ready() -> void:
 	hide_all()
 	%CRT.show()
 	GameLogic.screen = self
+	#await get_tree().create_timer(2).timeout
+	#display_required_rating(5)
 	#display_default()
 	#await get_tree().create_timer(1).timeout
 	#display_rating(3)
@@ -35,6 +37,8 @@ func hide_all(clear_text := false) -> void:
 	%LaughText.visible_ratio = 0
 	%Comment.visible_characters = 0
 	%Rating.text = ""
+	%Required.visible_ratio = 0
+	%Laugh.visible_characters = 0
 
 
 func display_angry() -> void:
@@ -71,6 +75,7 @@ func display_processing() -> void:
 func display_rating(rating: int = 10) -> void:
 	hide_all()
 	%Rating.text = "%s/10" % rating
+	await get_tree().create_timer(3).timeout
 
 func display_comment(comment: String) -> void:
 	%Comment.text = comment
@@ -82,13 +87,28 @@ func display_comment(comment: String) -> void:
 	await tween.finished
 
 func display_main_menu() -> void:
+	hide_all()
 	%MainMenu.display()
 
+func display_required_rating(rating: int) -> void:
+	hide_all()
+	%Required.text = "Submit your sentence.\nIf I rate it less than %s you [wave amp=80]die[/wave]." % rating
+	
+	var tween := create_tween()
+	tween.tween_property(%Required, "visible_ratio", 1, 3)
+	tween.tween_interval(1)
+	await tween.finished
 
-
-
-
-
-
+func display_make_me_laugh() -> void:
+	hide_all()
+	await get_tree().create_timer(.5).timeout
+	%Laugh.visible_characters = 4
+	await get_tree().create_timer(.5).timeout
+	%Laugh.visible_characters = 7
+	await get_tree().create_timer(.5).timeout
+	%Laugh.visible_characters = -1
+	await get_tree().create_timer(2).timeout
+	
+	
 
 

@@ -74,6 +74,21 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.196078, 0.196078, 0.196078, 1)
 
+[node name="Required" type="RichTextLabel" parent="CanvasLayer/Screen"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(3000, 1000)
+layout_mode = 1
+offset_left = 309.0
+offset_top = 635.0
+offset_right = 3309.0
+offset_bottom = 1635.0
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "Submit your sentence.
+If I rate it less than%s you [wave amp=80]die~[/wave]"
+scroll_active = false
+visible_characters_behavior = 1
+
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Screen"]
 layout_mode = 1
 anchors_preset = 15
@@ -89,12 +104,21 @@ theme_override_font_sizes/font_size = 120
 text = "Processing your puny humor..."
 horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters_behavior = 1
 
 [node name="Rating" type="Label" parent="CanvasLayer/Screen/CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 512
 text = "7/10"
+visible_characters_behavior = 1
+
+[node name="Laugh" type="Label" parent="CanvasLayer/Screen/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 237
+text = "MAKE ME LAUGH"
+visible_characters_behavior = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Screen"]
 layout_mode = 1
@@ -112,25 +136,30 @@ theme_override_constants/margin_bottom = 155
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "Prepare to [shake level=80 rate=30]DIE[/shake]"
 fit_content = true
 autowrap_mode = 0
+visible_characters_behavior = 1
 
 [node name="LaughText" type="RichTextLabel" parent="CanvasLayer/Screen/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "[wave amp=100]HA HA HA"
 fit_content = true
 autowrap_mode = 0
+visible_characters_behavior = 1
 
 [node name="Comment" type="RichTextLabel" parent="CanvasLayer/Screen/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_font_sizes/normal_font_size = 64
 fit_content = true
 shortcut_keys_enabled = false

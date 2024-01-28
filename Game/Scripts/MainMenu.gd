@@ -20,6 +20,8 @@ func _input(event):
 func click() -> void:
 	if %Mouse.overlaps_area(%Play):
 		GameLogic.play_game()
+		hide()
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	#elif %Mouse.overlaps_area(%Play): quit()
 
 
