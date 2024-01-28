@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://biu8ol4vojv2" path="res://Game/Textures/robot_default.png" id="2_foyl5"]
 [ext_resource type="Texture2D" uid="uid://df68sfnroevy0" path="res://Game/Textures/robot_angry.png" id="3_4c3e3"]
 [ext_resource type="Texture2D" uid="uid://u5n8yqqqf3fv" path="res://Game/Textures/robot_laugh.png" id="4_5brjg"]
-[ext_resource type="PackedScene" uid="uid://chicpacjlxc6f" path="res://Game/Scenes/MainMenu.tscn" id="6_m012s"]
+[ext_resource type="PackedScene" path="res://Game/Scenes/MainMenu.tscn" id="6_m012s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_20g8d"]
 shader = ExtResource("1_5csgi")
